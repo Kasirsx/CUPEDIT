@@ -85,7 +85,7 @@
   "photo_edit": "Photo edit",
   "text_to_image": "Text to image",
   "autoCut": "AutoCut",
-  "prodect_photo": "Prodect photo",
+  "prodect_photo": "Product photo",
   "collapse": "Collapse",
   "ai_poster": "Ai poster",
   "ai_model": "Ai model",
@@ -96,5 +96,13 @@
   "image_enhancement": "Image enhancement",
   "press_and_drag_to_reorder": "Press and drag to reorder",
   "new_project": "New Project",
-  "space": "Space"
+  "space": "Space",
+
+  "=================New_project================": "=====================",
+  "albums": "Albums",
+  "kasirsx": "Kasirsx",
+  "library": "Library",
+  "videos": "Videos",
+  "photos": "Photos",
+  "images": "Images"
 }

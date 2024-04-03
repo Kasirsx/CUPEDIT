@@ -1,86 +1,35 @@
-import 'package:cupcat/core/constants/app_colors.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
-import 'package:cupcat/core/widgets/custom_image.dart';
-import 'package:cupcat/features/home/presentation/widgets/grid_tranzlation_and_icons.dart';
-import 'package:cupcat/features/home/presentation/widgets/home_new_project_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_manager/photo_manager.dart';
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
+import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
+import '/core/widgets/custom_image.dart';
+import '/features/edit_new_project/presentation/pages/new_project_page.dart';
 import '/features/home/presentation/widgets/general_home_page_scaffold.dart';
+import '/features/home/presentation/widgets/grid_tranzlation_and_icons.dart';
+import '/features/home/presentation/widgets/home_new_project_card.dart';
+import '/features/home/presentation/widgets/projects_home_row.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
-/*  final List<String> itemNames = [
-    "photo_edit".tr(),
-    "text_to_image".tr(),
-    "autoCut".tr(),
-    "prodect_photo".tr(),
-    "collapse".tr(),
-    "ai_poster".tr(),
-    "ai_model".tr(),
-    "camera".tr(),
-    "retouch".tr(),
-    "auto_captions".tr(),
-    "teleprompter".tr(),
-    "remove_background".tr(),
-    "image_enhancement".tr(),
-  ];
+  @override
+  State<Home> createState() => _HomeState();
+}
 
-  final List itemsData = [
-    {
-      "imgSrc": AppAssets.homePageIconArrows,
-      "title": "photo_edit".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconEdit,
-      "title": "text_to_image".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "autoCut".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "prodect_photo".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "collapse".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "ai_poster".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "ai_model".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "camera".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "retouch".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "auto_captions".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "teleprompter".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "remove_background".tr(),
-    },
-    {
-      "imgSrc": AppAssets.homePageIconImage,
-      "title": "image_enhancement".tr(),
-    },
-  ];*/
+class _HomeState extends State<Home> {
+/*  List<AssetEntity> selectedAssetsList = [];
+
+  Future pickAssets({
+    required int maxCount,
+    required RequestType requestType,
+  }) async {
+    final result =await AnimationNavigation.slidePush(context, NewProjectPage());
+
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +47,11 @@ class Home extends StatelessWidget {
                   mainAxisSpacing: 25,
                   mainAxisExtent: 100,
                 ),
-                itemCount: GridItemTranzlation.itemNames.length,
+                itemCount: GridItemTranslation.itemNames.length,
                 itemBuilder: (BuildContext context, int index) {
                   return _buildFuietureWidgetItem(
-                    GridItemTranzlation.translatedStrings[index],
-                    GridItemTranzlation.itemIcons[index],
+                    GridItemTranslation.translatedStrings[index],
+                    GridItemTranslation.itemIcons[index],
                     onTap: () {
                       print(index);
                     },
@@ -118,59 +67,16 @@ class Home extends StatelessWidget {
               ),
               HomeNewProjectCard(
                 onTap: () {
+             /*     pickAssets(
+                    maxCount: 10,
+                    requestType: RequestType.common,
+                  );*/
+
                   print("object");
+                  AnimationNavigation.slidePush(context, NewProjectPage());
                 },
               ),
-
-
-
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Projects".tr(),
-                    style: AppTheme.headline,
-                  ),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          print("space");
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  color: AppColors.lightBlueAccent, width: 1.5)),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.cloud_upload,
-                                color: AppColors.lightBlueAccent,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "space".tr(),
-                                style: AppTheme.bodySmall.copyWith(
-                                  color: AppColors.lightBlueAccent,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.edit_note,size: 30,),
-                      )
-                    ],
-                  )
-                ],
-              ),
+              const ProjectsHomeRow(),
             ].expand(
               (element) => [
                 element,
@@ -201,7 +107,7 @@ Widget _buildFuietureWidgetItem(String title, String imagePath,
           Expanded(
             flex: 4,
             child: Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: AppColors.lightGrey,
                 borderRadius: BorderRadius.circular(12),
@@ -226,7 +132,7 @@ Widget _buildFuietureWidgetItem(String title, String imagePath,
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     ),

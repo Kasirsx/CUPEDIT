@@ -1,7 +1,7 @@
 import 'package:cupcat/core/constants/app_assets.dart';
 import 'package:easy_localization/easy_localization.dart';
-
-class GridItemTranzlation {
+//Translation
+class GridItemTranslation {
   static List<String> itemNames = [
     "photo_edit".tr(),
     "text_to_image".tr(),
@@ -24,14 +24,14 @@ class GridItemTranzlation {
   static List<String> itemIcons = [
     AppAssets.homePageIconEdit,
     AppAssets.homePageIconImage,
-    AppAssets.homePageIconArrows,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
-    AppAssets.homePageIconImage,
+    AppAssets.homePageAutoCut,
+    AppAssets.homePageProductPhoto,
+    AppAssets.homePageCollapse,
+    AppAssets.homePageAiPoster,
+    AppAssets.homePageAiModel,
+    AppAssets.homePageCamera,
+    AppAssets.homePageRetouch,
+    AppAssets.homePageAutoCaptions,
     AppAssets.homePageTeleprompter,
     AppAssets.homePageImageRemoveBackground,
     AppAssets.homePageImageEnhancement,

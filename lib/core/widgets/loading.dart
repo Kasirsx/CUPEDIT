@@ -1,12 +1,15 @@
-import '/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-
 //import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '/core/constants/app_colors.dart';
 
 class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({Key? key}) : super(key: key);
+  const LoadingWidget({
+    Key? key,
+    this.color,
+  }) : super(key: key);
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class LoadingWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15), //border corner radius
             color:
-                index.isEven ? AppColors.primaryColor : AppColors.primaryColor,
+                color ?? AppColors.primaryColor,
           ),
         );
       },

@@ -15,7 +15,6 @@ class HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = [
     Home(),
-
     Profile(),
     Inbox(),
     Profile(),
