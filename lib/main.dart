@@ -3,11 +3,13 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '/core/constants/app_theme.dart';
 import '/core/utils/shared_storage.dart';
@@ -16,7 +18,6 @@ import 'core/constants/app_settings.dart';
 import 'core/notification/notification.dart';
 import 'core/widgets/easy_loading.dart';
 import 'features/home/presentation/pages/homeScreen.dart';
-import 'features/home/presentation/pages/home.dart';
 import 'features/spalsh/presentation/page/splash_page.dart';
 
 Future<void> main() async {
@@ -31,6 +32,13 @@ Future<void> main() async {
 
   timeago.setLocaleMessages('ar', timeago.ArMessages());
   timeago.setLocaleMessages('en', timeago.EnMessages());
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
+  );
+  AssetPicker.registerObserve();
+  // Enables logging with the photo_manager.
+  PhotoManager.setLog(true);
 
   runApp(
     EasyLocalization(

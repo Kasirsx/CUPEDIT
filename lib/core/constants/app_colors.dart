@@ -85,6 +85,7 @@ class AppColors {
   static const teal = Colors.teal;
   static const blue = Colors.blueAccent;
   static const lightBlueAccent = Colors.lightBlueAccent;
+  static const black12 = Colors.black12;
 
   static const red = Colors.red;
   static const LinearGradient authColor = LinearGradient(

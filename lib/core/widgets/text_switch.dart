@@ -28,81 +28,63 @@ class _TextSwitchState extends State<TextSwitch> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.mainGrayColor,
-        borderRadius: BorderRadius.circular(25),
-        // border: Border.all(
-        //   color: AppColors.mainGrayColor,
-        // ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            onTap: widget.onPressFirst,
-            child: Material(
-              elevation: widget.isFirstSelected! ? 5 : 0,
-              borderRadius: BorderRadius.circular(25),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                width:
-                    widget.isFirstSelected! ? screenWidth / 2 : screenWidth / 3,
-                height: 50,
-                curve: Curves.easeInCirc,
-                decoration: BoxDecoration(
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        InkWell(
+          onTap: widget.onPressFirst,
+          child: Column(
+            children: [
+              Text(
+                widget.firstText ?? "",
+                style: AppTheme.headline.copyWith(
+                  fontWeight: FontWeight.bold,
                   color: widget.isFirstSelected!
-                      ? AppColors.primaryColor
-                      : AppColors.mainGrayColor,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Center(
-                  child: Text(
-                    widget.firstText ?? "",
-                    style: AppTheme.headline6.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: widget.isFirstSelected!
-                          ? AppColors.white
-                          : AppColors.black,
-                    ),
-                  ),
+                      ? AppColors.lightBlueAccent
+                      : AppColors.white,
                 ),
               ),
-            ),
-          ),
-          InkWell(
-            onTap: widget.onPressSecond,
-            child: Material(
-              elevation: widget.isFirstSelected! ? 0 : 5,
-              borderRadius: BorderRadius.circular(25),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                width:
-                    widget.isFirstSelected! ? screenWidth / 3 : screenWidth / 2,
-                height: 50,
-                curve: Curves.easeInCirc,
+              Container(
+                width: 60,
+                height: 5,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
                   color: widget.isFirstSelected!
-                      ? AppColors.mainGrayColor
-                      : AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Center(
-                  child: Text(
-                    widget.secondText ?? "",
-                    style: AppTheme.headline6.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: widget.isFirstSelected!
-                          ? AppColors.black
-                          : AppColors.white,
-                    ),
-                  ),
+                      ? AppColors.lightBlueAccent
+                      : AppColors.transparent,
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+        InkWell(
+          onTap: widget.onPressSecond,
+          child: Column(
+            children: [
+              Text(
+                widget.secondText ?? "",
+                style: AppTheme.headline.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: widget.isFirstSelected!
+                      ? AppColors.white
+                      : AppColors.lightBlueAccent,
+                ),
+              ),
+              Container(
+                width: 60,
+                height: 5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: widget.isFirstSelected!
+                      ? AppColors.transparent
+                      : AppColors.lightBlueAccent,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

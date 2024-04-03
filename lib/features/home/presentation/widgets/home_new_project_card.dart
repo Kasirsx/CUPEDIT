@@ -1,7 +1,8 @@
-import 'package:cupcat/core/constants/app_colors.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
 
 class HomeNewProjectCard extends StatelessWidget {
   const HomeNewProjectCard({
@@ -27,7 +28,7 @@ class HomeNewProjectCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               Text(
+              Text(
                 "new_project".tr(),
                 style: AppTheme.headline,
               ),

@@ -59,16 +59,26 @@ class AppAssets {
   static const String appBackgroundURI = '${baseHomeURI}app_background_1.png';
 
   ///Home Page
-  static const String homePageIconArrows =
-      '${baseHomeURI}arrows.png';
-  static const String homePageIconEdit =
-      '${baseHomeURI}edit-image.png';
-  static const String homePageIconImage =
-      '${baseHomeURI}image.png';
+  static const String homePageIconArrows = '${baseHomeURI}arrows.png';
+  static const String homePageIconEdit = '${baseHomeURI}edit-image.png';
+  static const String homePageIconImage = '${baseHomeURI}image.png';
   static const String homePageImageEnhancement =
       '${baseHomeURI}image_enhancement.png';
   static const String homePageImageRemoveBackground =
       '${baseHomeURI}remove_background.png';
-  static const String homePageTeleprompter =
-      '${baseHomeURI}teleprompter.png';
+  static const String homePageTeleprompter = '${baseHomeURI}teleprompter.png';
+  static const String homePageAutoCaptions = '${baseHomeURI}auto_captions.png';
+  static const String homePageRetouch = '${baseHomeURI}retouch.png';
+  static const String homePageCamera = '${baseHomeURI}camera.png';
+  static const String homePageAiPoster = '${baseHomeURI}ai_poster.png';
+  static const String homePageCollapse = '${baseHomeURI}collapse.png';
+  static const String homePageProductPhoto = '${baseHomeURI}product_photo.png';
+  static const String homePageAutoCut = '${baseHomeURI}autoCut.png';
+  static const String homePageAiModel = '${baseHomeURI}ai_model.png';
+
+
+
+
+  static const String baseNewProject = '${baseAssetsURI}new_project/';
+  static const String cancelNewProject = '${baseNewProject}close.png';
 }
