@@ -87,7 +87,7 @@ class _ImagePickerState extends State<ImagePicker> {
                 return const Center(
                   child: Icon(
                     Icons.error,
-                    color: Colors.red,
+                    color: AppColors.red,
                   ),
                 );
               },
@@ -102,7 +102,7 @@ class _ImagePickerState extends State<ImagePicker> {
                 padding: EdgeInsets.all(12),
                 child: Icon(
                   Icons.video_call,
-                  color: Colors.red,
+                  color: AppColors.red,
                 ),
               ),
             ),
@@ -118,11 +118,11 @@ class _ImagePickerState extends State<ImagePicker> {
                   decoration: BoxDecoration(
                     color:
                         widget.selectedAssetList.contains(assetEntity) == true
-                            ? Colors.blue
-                            : Colors.black12,
+                            ? AppColors.blue
+                            : AppColors.black12,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white,
+                      color: AppColors.white,
                       width: 1.5,
                     ),
                   ),
@@ -133,8 +133,8 @@ class _ImagePickerState extends State<ImagePicker> {
                       style: TextStyle(
                         color: widget.selectedAssetList.contains(assetEntity) ==
                                 true
-                            ? Colors.white
-                            : Colors.transparent,
+                            ? AppColors.white
+                            : AppColors.transparent,
                       ),
                     ),
                   ),
