@@ -78,7 +78,8 @@ class AppAssets {
 
 
 
-
+ ////New Project
   static const String baseNewProject = '${baseAssetsURI}new_project/';
   static const String cancelNewProject = '${baseNewProject}close.png';
+  static const String saveEditImageOrVideoNewProject = '${baseNewProject}save_edit_image_or_video.png';
 }
