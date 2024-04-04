@@ -1,13 +1,11 @@
+import 'package:cupcat/features/edit_new_project/presentation/widgets/select_type_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_manager/photo_manager.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
-import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
 import '/core/widgets/custom_image.dart';
-import '/features/edit_new_project/presentation/pages/new_project_page.dart';
 import '/features/home/presentation/widgets/general_home_page_scaffold.dart';
 import '/features/home/presentation/widgets/grid_tranzlation_and_icons.dart';
 import '/features/home/presentation/widgets/home_new_project_card.dart';
@@ -21,16 +19,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-/*  List<AssetEntity> selectedAssetsList = [];
-
-  Future pickAssets({
-    required int maxCount,
-    required RequestType requestType,
-  }) async {
-    final result =await AnimationNavigation.slidePush(context, NewProjectPage());
-
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return GeneralHomePageScaffold(
@@ -67,13 +55,14 @@ class _HomeState extends State<Home> {
               ),
               HomeNewProjectCard(
                 onTap: () {
-             /*     pickAssets(
+                  /*     pickAssets(
                     maxCount: 10,
                     requestType: RequestType.common,
                   );*/
-
+                  _selectAssetsType(context);
+                  //pickVideo(context);
                   print("object");
-                  AnimationNavigation.slidePush(context, NewProjectPage());
+                  //AnimationNavigation.slidePush(context, NewProjectPage());
                 },
               ),
               const ProjectsHomeRow(),
@@ -93,6 +82,11 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+void _selectAssetsType(BuildContext context){
+  showDialog(context: context, builder: (context) => SelectAssetsType(),);
+}
+
 
 Widget _buildFuietureWidgetItem(String title, String imagePath,
     {void Function()? onTap}) {
