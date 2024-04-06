@@ -76,10 +76,49 @@ class AppAssets {
   static const String homePageAutoCut = '${baseHomeURI}autoCut.png';
   static const String homePageAiModel = '${baseHomeURI}ai_model.png';
 
+//bottom navigation Bar
+  static const String baseBottomNavigationBarMenuURI =
+      '${baseHomeURI}bottom_navigation_bar/';
+
+  static const String cutIcon = '${baseBottomNavigationBarMenuURI}scissors.svg';
+
+//prifile page
+  static const String baseProfileURI = '${baseAssetsURI}profile/';
+
+  static const String question = '${baseProfileURI}question.png';
+
+  static const String profileTikTok = '${baseProfileURI}profile_tik_tok.jpg';
+  static const String shareIcon = '${baseProfileURI}share.png';
+  static const String pencilIcon = '${baseProfileURI}pencil.png';
+
+//manage account
+  static const String baseManageURI = '${baseAssetsURI}manage_account/';
+
+  static const String googleIcon = '${baseManageURI}search.png';
+  static const String tiktokIcon = '${baseManageURI}tiktok.png';
+  static const String facebookIcon = '${baseManageURI}facebook.png';
+
+  //drawer menu
+  static const String baseDrawerMenuURI = '${baseAssetsURI}drawer_menu/';
+
+  static const String scanIcon = '${baseDrawerMenuURI}scan.png';
+
+  static const String blockedAccountsIcon =
+      '${baseDrawerMenuURI}block-user.png';
+  static const String manageAccountsIcon =
+      '${baseDrawerMenuURI}manage_account.png';
 
 
- ////New Project
+
+  ////New Project
   static const String baseNewProject = '${baseAssetsURI}new_project/';
   static const String cancelNewProject = '${baseNewProject}close.png';
   static const String saveEditImageOrVideoNewProject = '${baseNewProject}save_edit_image_or_video.png';
+
+  ////New Project
+
+
+
+
+
 }
