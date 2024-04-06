@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_theme.dart';
 import '../../../../../../core/widgets/text_switch.dart';
-import '../widgets/custom_icon_widget.dart';
 import '../widgets/setting_card_custom.dart';
 
 class Setting extends StatelessWidget {
@@ -25,43 +24,43 @@ class Setting extends StatelessWidget {
           SettingCardCustom(
             title: "add_default_ending".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "auto_upload".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "feedback".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "cupedit_community_guidelines".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "terms_of_service".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "privacy_policy".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
             title: "open_source_software_notice".tr(),
             widget: CustomIconWidget(
-              onTap: () {},
+              () {},
             ),
           ),
           SettingCardCustom(
@@ -87,6 +86,13 @@ class Setting extends StatelessWidget {
             )
             .toList(),
       ),
+    );
+  }
+
+  Widget CustomIconWidget(VoidCallback? onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Icon(Icons.chevron_right),
     );
   }
 }

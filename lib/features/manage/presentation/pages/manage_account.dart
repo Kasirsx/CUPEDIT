@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../../core/widgets/custom_image.dart';
+import '../../../../core/utils/shared_storage.dart';
 import '../widgets/account_info_card.dart';
 import '../widgets/custom_account_row.dart';
 
@@ -52,7 +53,10 @@ class ManageAcccount extends StatelessWidget {
                 style: AppTheme.headline6,
               ),
               secondWidget: Align(
-                  alignment: Alignment.centerRight, child: CustomSwitchWidget()),
+                  alignment: SharedStorage.getLanguage() == "en"
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: CustomSwitchWidget()),
             ),
             CustomRowAccount(
               showLinkButton: true,

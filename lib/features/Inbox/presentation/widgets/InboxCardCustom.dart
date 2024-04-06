@@ -1,19 +1,17 @@
 import 'package:cupcat/core/constants/app_theme.dart';
+import 'package:cupcat/features/Inbox/presentation/widgets/official1.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/constants/app_colors.dart';
+import '../data/system_notification.dart';
 
 class InboxCardCustom extends StatelessWidget {
-  final String? date;
-  final String? title;
-  final String? subtitle;
+  final SystemNotification systemNotification;
 
   const InboxCardCustom({
     Key? key,
-    this.date,
-    this.title,
-    this.subtitle,
+    required this.systemNotification,
   }) : super(key: key);
 
   @override
@@ -37,7 +35,9 @@ class InboxCardCustom extends StatelessWidget {
                       style: AppTheme.headline3),
                 ),
                 Text(
-                  date != null ? date! : "",
+                  systemNotification.date != null
+                      ? systemNotification.date!
+                      : "",
                   style: AppTheme.bodySmall,
                 ),
               ],
@@ -45,11 +45,18 @@ class InboxCardCustom extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text(title != null ? title! : "", style: AppTheme.headline6),
+            Text(
+                systemNotification.title != null
+                    ? systemNotification.title!
+                    : "",
+                style: AppTheme.headline6),
             SizedBox(
               height: 10,
             ),
-            Text(subtitle != null ? subtitle! : "",
+            Text(
+                systemNotification.subtitle != null
+                    ? systemNotification.subtitle!
+                    : "",
                 style: AppTheme.bodySmall.copyWith(color: AppColors.grey)),
             SizedBox(
               height: 10,

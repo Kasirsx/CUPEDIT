@@ -18,10 +18,11 @@ class TrendCustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 3.5,
-      // Divide the width of the screen by 3
+    double widthCard = MediaQuery.of(context).size.width / 3.5;
 
+    return Container(
+      width: widthCard,
+      // Divide the width of the screen by 3
       decoration: BoxDecoration(
         color: AppColors.grey70,
         borderRadius: BorderRadius.circular(8.0),

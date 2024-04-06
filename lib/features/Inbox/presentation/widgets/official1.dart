@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/constants/app_colors.dart';
+import '../data/system_notification.dart';
 import 'InboxCardCustom.dart';
-import 'official_list_items.dart';
 
 class CapCutOfficial extends StatelessWidget {
-  List<String> titles = [
-    'Retouch features just got better on CapCuts desktop app',
-    'Retouch features just got better on CapCuts desktop app',
-    'Retouch features just got better on CapCuts desktop app'
+  List<SystemNotification> inboxCards = [
+    SystemNotification(
+        "2022-01-01",
+        'Retouch features just got better on CapCuts desktop app',
+        'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
+    SystemNotification(
+        "2022-01-01",
+        'Retouch features just got better on CapCuts desktop app',
+        'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
+    SystemNotification(
+        "2022-01-01",
+        'Retouch features just got better on CapCuts desktop app',
+        'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
   ];
-
-  List<String> subtitles = [
-    'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !',
-    'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !',
-    'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'
-  ];
-  List<String> dates = ['3:14', '5:15', '3:13'];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.grey50,
-      child:
-          OfiicialListItems(titles: titles, subtitles: subtitles, dates: dates),
-    );
+        color: AppColors.grey50,
+        child: ListView.builder(
+          itemCount: inboxCards.length,
+          itemBuilder: (context, index) {
+            SystemNotification systemNotification = inboxCards[index];
+            return InboxCardCustom(
+              systemNotification: systemNotification,
+            );
+          },
+        ));
   }
 }
