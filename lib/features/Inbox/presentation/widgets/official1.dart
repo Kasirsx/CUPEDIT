@@ -17,7 +17,7 @@ class CapCutOfficial extends StatelessWidget {
     SystemNotification(
         "2022-01-01",
         'Retouch features just got better on CapCuts desktop app',
-        'try feature lke retouch  to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
+        'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
   ];
 
   @override
