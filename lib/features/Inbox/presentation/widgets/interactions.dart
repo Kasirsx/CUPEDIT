@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class Templates extends StatelessWidget {
+class TabInteraction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Profile',
+        'Tab 2 Content',
         style: TextStyle(fontSize: 24),
       ),
     );
