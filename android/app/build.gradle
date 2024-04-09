@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.cupcat"
-    compileSdk flutter.compileSdkVersion
+    compileSdk 34
     ndkVersion "25.1.8937393"
 
     compileOptions {
@@ -52,6 +52,8 @@ android {
         multiDexEnabled true
     }
 
+
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
@@ -65,4 +67,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+
+}

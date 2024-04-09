@@ -104,5 +104,8 @@
   "library": "Library",
   "videos": "Videos",
   "photos": "Photos",
-  "images": "Images"
+  "images": "Images",
+  "there_is_no_data": "There is no data",
+  "there_is_no_images": "There is no images",
+  "there_is_no_videos": "There is no videos"
 }

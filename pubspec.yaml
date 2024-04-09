@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+3
+version: 1.0.0+4
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
@@ -51,7 +51,7 @@ dependencies:
 
   #firebase
   firebase_core: 2.25.0  # 2.20.0
-  firebase_messaging:  14.7.2
+#  firebase_messaging:  14.7.2
   flutter_fcm: 1.0.12
   #  firebase_analytics: 10.4.4
   #  firebase_in_app_messaging: 0.7.3+4
@@ -123,15 +123,23 @@ dependencies:
 
   #  project
   wechat_assets_picker: 9.0.2
+#  video_trimmer: 3.0.1
+  video_editor: 3.0.0
+  fraction: 4.1.4
+  extended_image:
+#  path: 1.9.0
+  ffmpeg_kit_flutter: 6.0.3
+#  flutter_ffmpeg: ^0.4.2
+#  video_editor_sdk: 3.1.0
+#  imgly_sdk: 3.1.0
+#  ffmpeg_kit_flutter_min:
+#  ffmpeg_kit_flutter:
+  package_info_plus:
+  path:
+  path_provider:
+  provider:
 
-  #  wechat_camera_picker: ^4.2.0
-#  extended_image: ^8.2.0
-#  package_info_plus:
-#  path: ^1.8.0
-#  path_provider: ^2.0.15
-#  provider: ^6.0.2
-#  photo_manager: ^3.0.0
-#  permission_handler: 11.3.1
+
 
 
 
