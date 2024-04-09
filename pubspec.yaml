@@ -191,6 +191,10 @@ flutter:
     - assets/images/request/
     - assets/images/shopping/
     - assets/images/new_project/
+    - assets/images/manage_account/
+    - assets/images/drawer_menu/
+    - assets/images/new_project/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

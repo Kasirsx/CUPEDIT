@@ -114,6 +114,28 @@ class AppColors {
       -1.0,
     ), // Adjust end alignment for spread effect
   );
+  static LinearGradient ProfilCardGradinet = const LinearGradient(
+      colors: [
+        Color(0xffdad2ee),
+
+
+        Color(0xffe3f6fd),
+
+        Color(0xffdbd3eb),
+        Color(0xffc7ebf7),
+
+        // BlueAccent color with opacity
+      ],
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft // Adjust end alignment for spread effect
+  );
+
+  static Color grey70 = Color(0xFFEDF5F5);
+  static Color grey40 =Color(0xFFFAFAFA);
+  static Color grey50 = Color(0xFFF5F5F5);
+  static const grey350 = Color.fromRGBO(189, 189, 189, 1);
+
+  static const cyan = Color(0xff41C9E2);
 
 
 

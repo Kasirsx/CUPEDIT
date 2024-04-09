@@ -79,5 +79,42 @@
   "complete_your_information": "قم بإكمال معلواتك",
   "app_language": "لغة التطبيق",
   "=================home_page================": "=====================",
-  "": ""
+  "": "",
+  "==============setting_page================": "===================",
+  "add_default_ending": "إضافة نهاية افتراضية",
+  "auto_upload": "تحميل تلقائي",
+
+  "Feedback": "الآراء والملاحظات",
+  "cupedit_community_guidelines": "إرشادات مجتمع CupEdit",
+  "terms_of_service":"شروط الخدمة" ,
+  "privacy_policy":"سياسة الخصوصية" ,
+  "open_source_software_notice":"إشعار البرامج مفتوحة المصدر",
+  "clear_cache": "مسح ذاكرة التخزين المؤقت",
+  "version": "الإصدار",
+  "==============profile_page================": "===================",
+
+
+  "join_cupedit_pro": "انضم إلى CupEdit Pro",
+  "follow": "متابعة",
+  "edit_profile": "تعديل الملف الشخصي",
+  "trending_creators": "مُبدعون رائجون",
+  "view_more": "عرض المزيد",
+  "add_bio": "أضف السيرة الذاتية",
+  "tik_tok": "تيك توك",
+
+  "view_history":"عرض السجل",
+  "apply_tobe_creater": "قدّم طلبك لتكون مبدعًا",
+  "scan": "مسح",
+  "blocked_accounts": "الحسابات المحظورة",
+  "manage_accounts": "إدارة الحساب",
+  "followers": "متابعين",
+  "following": "متابعة",
+
+  "==============inbox_page================": "===================",
+
+  "system_notification": "إشعار النظام",
+  "cupedit_official": "مسؤول CupEdit",
+  "interactions": "التفاعلات",
+  "features": "الميزات",
+  "inbox": "صندوق الوارد"
 }
