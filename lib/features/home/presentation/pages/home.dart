@@ -1,7 +1,8 @@
+import 'package:cupcat/core/animations/navigation_route_animation/navigation_route_animation.dart';
+import 'package:cupcat/features/edit_new_project/presentation/pages/new_project_page.dart';
 import 'package:cupcat/features/edit_new_project/presentation/widgets/select_type_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
@@ -36,11 +37,11 @@ class _HomeState extends State<Home> {
                   mainAxisSpacing: 25,
                   mainAxisExtent: 100,
                 ),
-                itemCount: GridItemTranslation.itemNames.length,
+                itemCount: GridItemTranslation.grid.length,
                 itemBuilder: (BuildContext context, int index) {
                   return _buildFuietureWidgetItem(
-                    GridItemTranslation.translatedStrings[index],
-                    GridItemTranslation.itemIcons[index],
+                    GridItemTranslation.grid[index].text!,
+                    GridItemTranslation.grid[index].assets!,
                     onTap: () {
                       print(index);
                     },
@@ -60,9 +61,11 @@ class _HomeState extends State<Home> {
                     maxCount: 10,
                     requestType: RequestType.common,
                   );*/
-                  _selectAssetsType(context);
+                  AnimationNavigation.slidePush(context, NewProjectPage(),);
+
+                 /* _selectAssetsType(context);
                   //pickVideo(context);
-                  print("object");
+                  print("object");*/
                   //AnimationNavigation.slidePush(context, NewProjectPage());
                 },
               ),
@@ -84,10 +87,12 @@ class _HomeState extends State<Home> {
   }
 }
 
-void _selectAssetsType(BuildContext context){
-  showDialog(context: context, builder: (context) => SelectAssetsType(),);
+void _selectAssetsType(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => SelectAssetsType(),
+  );
 }
-
 
 Widget _buildFuietureWidgetItem(String title, String imagePath,
     {void Function()? onTap}) {

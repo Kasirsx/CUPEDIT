@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cupcat/core/utils/navigation.dart';
+import 'package:cupcat/features/edit_new_project/presentation/pages/edit_video.dart';
 import 'package:flutter/material.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
@@ -54,31 +57,38 @@ class SelectAssetsType extends StatelessWidget {
   }
 
   Future pickVideo(BuildContext context, RequestType requestType) async {
-    final List<AssetEntity>? videos = await AssetPicker.pickAssets(
+    final List<AssetEntity>? assets = await AssetPicker.pickAssets(
       context,
       pickerConfig: AssetPickerConfig(
         requestType: requestType,
+
       ),
     );
 
-    if (videos != null && videos.isNotEmpty) {
-      // Iterate through the selected videos
-      for (AssetEntity video in videos) {
-        // Access the properties of the selected video
-        String videoId = video.id;
-        String videoPath = video.relativePath ?? '';
-        Object videoDuration = video.videoDuration ?? 0;
 
-        AnimationNavigation.scalePush(
-          context,
-          const EditVideos(),
-        );
 
-        // Use the selected video as needed
-        print('Selected Video ID: $videoId');
-        print('Selected Video Path: $videoPath');
-        print('Selected Video Duration: $videoDuration seconds');
+
+
+
+    if (assets != null && assets.isNotEmpty) {
+      for (AssetEntity asset in assets) {
+        File? path = await asset.file;
+        if (path != null) {
+          print(path.path);
+          AnimationNavigation.scalePush(
+            context,
+            EditVideos(
+              file: File(path.path),
+            ),
+            //EditVideos(),
+          );
+          print('Selected Asset Path: $path');
+        }
       }
     }
+
+
+
+
   }
 }

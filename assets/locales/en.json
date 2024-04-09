@@ -97,9 +97,6 @@
   "press_and_drag_to_reorder": "Press and drag to reorder",
   "new_project": "New Project",
   "space": "Space",
-  "cup_edit": "EDITCUP",
-  "me": "Me",
-  "templates": "Templates",
 
   "=================New_project================": "=====================",
   "albums": "Albums",
@@ -107,56 +104,5 @@
   "library": "Library",
   "videos": "Videos",
   "photos": "Photos",
-  "images": "Images",
-  "==============setting_page================": "===================",
-
-  "add_default_ending": "Add default ending",
-  "auto_upload": "Auto upload",
-
-  "feedback": "Feedback",
-  "cupedit_community_guidelines": "CupEdit Community Guidelines",
-  "terms_of_service":"Terms of service" ,
-  "privacy_policy":"privacy policy" ,
-  "open_source_software_notice":"open_source_software_notice",
-  "clear_cache": "Clear cache",
-  "version": "Version",
-
-
-  "==============profile_page================": "===================",
-
-
-  "join_cupedit_pro": "Join CupEdit Pro",
-  "trending_creators": "Trending Creators",
-  "view_more": "View more",
-  "follow": "Follow",
-  "edit_profile": "Edit Profile",
-  "add_bio": "Add bio",
-  "tik_tok": "Tik tok",
-  "view_history":"View history",
-  "apply_tobe_creater": "Apply to be a creater",
-  "scan": "Scan",
-  "blocked_accounts": "Blocked accounts",
-  "manage_accounts": "Manage accounts",
-  "followers": "Followers",
-  "following": "Followes",
-  "==============inbox_page================": "===================",
-
-
-  "system_notification": "System notification",
-  "cupedit_official": "CupEdit official",
-  "interactions": "Interactions",
-  "features": "Features",
-  "inbox": "Inbox",
-  "==============manage_page================": "===================",
-
-  "contact_information": "contact information",
-  "security": "security",
-  "enter_the_password": "enter the password",
-  "google": "Google",
-  "facebook": "Facebook",
-
-  "manage_account": "Manage account",
-  "display_tik_tok_profile": "Display tik tok profile",
-  "link": "Link"
-
+  "images": "Images"
 }
