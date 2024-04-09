@@ -1,11 +1,10 @@
-import 'package:cupcat/core/constants/app_theme.dart';
- import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/animations/navigation_route_animation/navigation_route_animation.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/utils/navigation.dart';
-import '../../../setting/pages/setting.dart';
+import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
+import '/features/setting/presentation/pages/setting.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override

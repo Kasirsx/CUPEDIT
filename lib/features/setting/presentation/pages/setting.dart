@@ -1,19 +1,16 @@
-import 'package:cupcat/features/setting/widgets/custom_switch_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/constants/app_theme.dart';
-import '../../../../../../core/widgets/text_switch.dart';
-import '../widgets/setting_card_custom.dart';
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
+import '/features/setting/presentation/widgets/custom_switch_widget.dart';
+import '/features/setting/presentation/widgets/setting_card_custom.dart';
 
 class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 18),
       color: AppColors.white,
       child: ListView(
         children: [
@@ -92,7 +89,7 @@ class Setting extends StatelessWidget {
   Widget CustomIconWidget(VoidCallback? onTap) {
     return InkWell(
       onTap: onTap,
-      child: Icon(Icons.chevron_right),
+      child: const Icon(Icons.chevron_right),
     );
   }
 }

@@ -1,18 +1,16 @@
-import 'package:cupcat/core/constants/app_theme.dart';
-import 'package:cupcat/features/home/presentation/widgets/general_home_page_scaffold.dart';
-import 'package:cupcat/features/manage/presentation/widgets/general_manage_scaffold.dart';
-import 'package:cupcat/features/manage/presentation/widgets/curom_row_widget.dart';
-import 'package:cupcat/features/profile/presentation/widgets/custom_column.dart';
-import 'package:cupcat/features/setting/widgets/custom_switch_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../../../core/constants/app_assets.dart';
-import '../../../../../../../../core/constants/app_colors.dart';
-import '../../../../../../../../core/widgets/custom_image.dart';
-import '../../../../core/utils/shared_storage.dart';
-import '../widgets/account_info_card.dart';
-import '../widgets/custom_account_row.dart';
+import '/core/constants/app_assets.dart';
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
+import '/core/utils/shared_storage.dart';
+import '/features/manage/presentation/widgets/account_info_card.dart';
+import '/features/manage/presentation/widgets/curom_row_widget.dart';
+import '/features/manage/presentation/widgets/custom_account_row.dart';
+import '/features/manage/presentation/widgets/general_manage_scaffold.dart';
+import '/features/profile/presentation/widgets/custom_column.dart';
+import '/features/setting/presentation/widgets/custom_switch_widget.dart';
 
 class ManageAcccount extends StatelessWidget {
   ManageAcccount();
