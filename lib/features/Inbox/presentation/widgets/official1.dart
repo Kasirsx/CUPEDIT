@@ -20,6 +20,8 @@ class CapCutOfficial extends StatelessWidget {
         'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'),
   ];
 
+  CapCutOfficial({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

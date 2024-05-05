@@ -208,7 +208,8 @@ class AppTheme {
       color: AppColors.textHeadLineColor);
 
   static TextStyle get bodySmall => TextStyle(
-    color: AppColors.grey60,
+    //color: AppColors.grey60,
+    color: AppColors.white,
     fontSize: 10.5,
     fontWeight: FontWeight.w500,
     fontFamily: SharedStorage.getLanguage() == "ar" ?  AppSettings.arabicFont: AppSettings.englishFont,

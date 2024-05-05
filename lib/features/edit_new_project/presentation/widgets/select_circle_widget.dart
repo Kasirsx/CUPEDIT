@@ -1,5 +1,5 @@
-// import 'package:cupcat/core/constants/app_colors.dart';
-// import 'package:cupcat/core/constants/app_theme.dart';
+// import '/core/constants/app_colors.dart';
+// import '/core/constants/app_theme.dart';
 // import 'package:flutter/material.dart';
 // import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 //

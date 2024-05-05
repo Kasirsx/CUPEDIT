@@ -4,6 +4,8 @@ import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/widgets/custom_image.dart';
 
 class CustomProfileAppbar extends StatelessWidget {
+  const CustomProfileAppbar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(

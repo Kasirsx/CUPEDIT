@@ -17,19 +17,21 @@ import '../widgets/custom_trends.dart';
 import '../widgets/profile_rectangel.dart';
 
 class Profile extends StatelessWidget {
+  const Profile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GeneralHomePageScaffold(
       index: 3,
-      drawerWidget: CustomDrawer(),
+      drawerWidget: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Container(
           color: AppColors.white,
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           child: Column(
             children: [
-              CustomProfileAppbar(),
-              CustomRowAccount(
+              const CustomProfileAppbar(),
+              const CustomRowAccount(
                 image: AppAssets.profileTikTok,
                 widge: CustomColumn(
                   title: "Tik tok",
@@ -37,9 +39,9 @@ class Profile extends StatelessWidget {
                   additionalCard: ProfileRectangle(),
                 ),
               ),
-              SizedBox(height: 10),
-              CustomFollowersWidget(),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
+              const CustomFollowersWidget(),
+              const SizedBox(height: 10),
               CustomRow(
                 text: "add_bio".tr(),
                 leadingIcon: CustomImage.rectangle(
@@ -48,37 +50,37 @@ class Profile extends StatelessWidget {
                   image: AppAssets.pencilIcon,
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               CustomRow(
                 text: "tik_tok".tr(),
-                leadingIcon: Icon(Icons.tiktok_rounded, size: 14),
-                trailingIcon: Icon(
+                leadingIcon: const Icon(Icons.tiktok_rounded, size: 14),
+                trailingIcon: const Icon(
                   Icons.arrow_forward_ios_sharp,
                   size: 11,
                 ),
               ),
-              SizedBox(height: 10),
-              CustomEditProfile(),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
+              const CustomEditProfile(),
+              const SizedBox(height: 10),
               CustomTrends(),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Row(
                 children: [
                   Expanded(
                     child: CustomCard(
                       title: "view_history".tr(),
                       subTitle: "Recently viewed ..",
-                      icon: Icon(Icons.history),
+                      icon: const Icon(Icons.history),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                   ),
                   Expanded(
                     child: CustomCard(
                       title: "apply_tobe_creater".tr(),
                       subTitle: "create my one...",
-                      icon: Icon(Icons.history),
+                      icon: const Icon(Icons.history),
                     ),
                   )
                 ],

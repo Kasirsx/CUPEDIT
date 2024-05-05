@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cupcat/core/widgets/loading.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
@@ -8,6 +7,8 @@ import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
+import '/core/widgets/custom_text_rich.dart';
+import '/core/widgets/loading.dart';
 import '/features/edit_new_project/presentation/pages/picker_image_or_video.dart';
 import '/features/edit_new_project/presentation/widgets/asset_widget_builder.dart';
 import '/features/edit_new_project/presentation/widgets/media_services.dart';
@@ -80,126 +81,119 @@ class _ImagePickerState extends State<ImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return
-
-      widget.albumList.isEmpty ? Center(
-        child: Text(
-          "there_is_no_images".tr(),
-          style: AppTheme.headline.copyWith(
-            color: AppColors.white,
-          ),
-        ),
-      ) :
-
-
-      widget.assetList.isEmpty
-        ? const Center(
-            child: LoadingWidget(
-              color: AppColors.red,
-            ),
-            /* Text(
-              "there_is_no_data".tr(),
+    return widget.albumList.isEmpty
+        ? Center(
+            child: Text(
+              "there_is_no_images".tr(),
               style: AppTheme.headline.copyWith(
                 color: AppColors.white,
               ),
-            ),*/
+            ),
           )
-        : Column(
-            children: [
-              Expanded(
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: widget.assetList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5.5,
-                    mainAxisSpacing: 5.5,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index < widget.assetList.length) {
-                      // Add a null check for the index
-                      AssetEntity assetEntity = widget.assetList[index];
-                      final AssetEntity asset =
-                          widget.assetList.elementAt(index);
-                      return Stack(
-                        children: [
-                          ValueListenableBuilder<bool>(
-                            valueListenable: isDisplayingDetail,
-                            builder: (_, bool value, __) => GestureDetector(
-                              onTap: () async {
-                                if (value) {
-                                  final List<AssetEntity>? result =
-                                      await AssetPickerViewer.pushToViewer(
-                                    context,
-                                    currentIndex: index,
-                                    previewAssets: widget.assetList,
-                                    themeData:
-                                        AssetPicker.themeData(Colors.white),
-                                    //themeData: AssetPicker.themeData(themeColor),
-                                  );
-                                  onResult(result);
-                                }
-                              },
-                              child: RepaintBoundary(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: AssetWidgetBuilder(
-                                    entity: asset,
-                                    isDisplayingDetail: value,
+        : widget.assetList.isEmpty
+            ? const Center(
+                child: LoadingWidget(
+                  color: AppColors.red,
+                ),
+              )
+            : Column(
+                children: [
+                  Expanded(
+                    child: GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: widget.assetList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5.5,
+                        mainAxisSpacing: 5.5,
+                      ),
+                      itemBuilder: (context, index) {
+                        if (index < widget.assetList.length) {
+                          // Add a null check for the index
+                          AssetEntity assetEntity = widget.assetList[index];
+                          final AssetEntity asset =
+                              widget.assetList.elementAt(index);
+                          return Stack(
+                            children: [
+                              ValueListenableBuilder<bool>(
+                                valueListenable: isDisplayingDetail,
+                                builder: (_, bool value, __) => GestureDetector(
+                                  onTap: () async {
+                                    if (value) {
+                                      final List<AssetEntity>? result =
+                                          await AssetPickerViewer.pushToViewer(
+                                        context,
+                                        currentIndex: index,
+                                        previewAssets: widget.assetList,
+                                        themeData:
+                                            AssetPicker.themeData(Colors.white),
+                                        //themeData: AssetPicker.themeData(themeColor),
+                                      );
+                                      onResult(result);
+                                    }
+                                  },
+                                  child: RepaintBoundary(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: AssetWidgetBuilder(
+                                        entity: asset,
+                                        isDisplayingDetail: value,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Align(
-                              alignment: Alignment.topRight,
-                              child: GestureDetector(
-                                onTap: () =>
-                                    selectedAssets(assetEntity: assetEntity),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    width: 22.5,
-                                    height: 22.5,
-                                    decoration: BoxDecoration(
-                                      color: widget.selectedAssetList
-                                                  .contains(assetEntity) ==
-                                              true
-                                          ? AppColors.blue
-                                          : AppColors.black12,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: AppColors.white,
-                                        width: 1.5,
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "${widget.selectedAssetList.indexOf(assetEntity) + 1}",
-                                        style: AppTheme.bodySmall.copyWith(
+                              Positioned.fill(
+                                child: Align(
+                                  alignment: Alignment.topRight,
+                                  child: GestureDetector(
+                                    onTap: () => selectedAssets(
+                                        assetEntity: assetEntity),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Container(
+                                        width: 22.5,
+                                        height: 22.5,
+                                        decoration: BoxDecoration(
                                           color: widget.selectedAssetList
                                                       .contains(assetEntity) ==
                                                   true
-                                              ? AppColors.white
-                                              : AppColors.transparent,
+                                              ? AppColors.blue
+                                              : AppColors.black12,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: AppColors.white,
+                                            width: 1.5,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "${widget.selectedAssetList.indexOf(assetEntity) + 1}",
+                                            style: AppTheme.bodySmall.copyWith(
+                                              color: widget.selectedAssetList
+                                                          .contains(
+                                                              assetEntity) ==
+                                                      true
+                                                  ? AppColors.white
+                                                  : AppColors.transparent,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ],
-                      );
-                    } else {
-                      return Container();
-                    }
-                  },
-                ),
-              ),
-              /*Expanded(
+                            ],
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                    ),
+                  ),
+                  /*Expanded(
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
                   itemCount: widget.assetList.length,
@@ -222,16 +216,58 @@ class _ImagePickerState extends State<ImagePicker> {
                   },
                 ),
               ),*/
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SelectedAssetsListView(
-                  assets: widget.selectedAssetList,
-                  isDisplayingDetail: isDisplayingDetail,
-                  onResult: onResult,
-                  onRemoveAsset: removeAsset,
-                ),
-              )
-              /* Align(
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SelectedAssetsListView(
+                      assets: widget.selectedAssetList,
+                      isDisplayingDetail: isDisplayingDetail,
+                      onResult: onResult,
+                      onRemoveAsset: removeAsset,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 2.5),
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: widget.selectedAssetList.isEmpty
+                              ? AppColors.grey
+                              : AppColors.green,
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            if (widget.selectedAssetList.isNotEmpty) {
+                              for (AssetEntity asset
+                                  in widget.selectedAssetList) {
+                                File? path = await asset.file;
+                                if (path != null) {
+                                  print(path.path);
+
+                                  ///TODO
+                                  print('Selected Asset Path: $path');
+                                }
+                              }
+                            }
+                          },
+                          child: CustomTextRich(
+                            mainText: "add",
+                            secondText: widget.selectedAssetList.isEmpty
+                                ? ""
+                                : " (${widget.selectedAssetList.length})",
+                            secondStyle: AppTheme.headline
+                                .copyWith(color: AppColors.white),
+                            mainStyle: AppTheme.headline
+                                .copyWith(color: AppColors.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  /* Align(
                 alignment: Alignment.bottomCenter,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -336,8 +372,8 @@ class _ImagePickerState extends State<ImagePicker> {
                   ],
                 ),
               ),*/
-            ],
-          );
+                ],
+              );
   }
 
   Widget assetWidget(AssetEntity assetEntity) {

@@ -13,14 +13,14 @@ import '/features/profile/presentation/widgets/custom_column.dart';
 import '/features/setting/presentation/widgets/custom_switch_widget.dart';
 
 class ManageAcccount extends StatelessWidget {
-  ManageAcccount();
+  const ManageAcccount({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GeneralManageScaffold(
       backgroundColor: AppColors.white,
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 1),
+        margin: const EdgeInsets.symmetric(vertical: 1),
         child: Column(
           children: [
             AccountInfoCard(
@@ -34,11 +34,11 @@ class ManageAcccount extends StatelessWidget {
               subTitle: "enter_the_password".tr(),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 15),
+              margin: const EdgeInsets.symmetric(vertical: 15),
               height: 15,
               color: AppColors.grey40,
             ),
-            CustomRowAccount(
+             const CustomRowAccount(
               image: AppAssets.tiktokIcon,
               widge: CustomColumn(
                 title: "Tik tok",
@@ -54,7 +54,7 @@ class ManageAcccount extends StatelessWidget {
                   alignment: SharedStorage.getLanguage() == "en"
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
-                  child: CustomSwitchWidget()),
+                  child:  const CustomSwitchWidget()),
             ),
             CustomRowAccount(
               showLinkButton: true,

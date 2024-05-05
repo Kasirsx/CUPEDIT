@@ -1,5 +1,5 @@
-// import 'package:cupcat/features/edit_new_project/presentation/new_project_cubit/new_project_cubit.dart';
-// import 'package:cupcat/features/edit_new_project/presentation/new_project_cubit/new_project_state.dart';
+// import '/features/edit_new_project/presentation/new_project_cubit/new_project_cubit.dart';
+// import '/features/edit_new_project/presentation/new_project_cubit/new_project_state.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:wechat_assets_picker/wechat_assets_picker.dart';

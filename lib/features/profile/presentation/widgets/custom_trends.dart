@@ -1,4 +1,3 @@
-import 'package:cupcat/features/profile/presentation/widgets/trend_custom_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +5,7 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_theme.dart';
 import '../../data/trend_model.dart';
+import '/features/profile/presentation/widgets/trend_custom_card.dart';
 
 class CustomTrends extends StatelessWidget {
   String jsonString = '[{"title": "luna", "followers": "1000","image": '
@@ -14,6 +14,8 @@ class CustomTrends extends StatelessWidget {
       '"${AppAssets.profileTikTok}"}, '
       '{"title": "star", "followers": "3000","image":'
       ' "${AppAssets.profileTikTok}"}]';
+
+  CustomTrends({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +34,23 @@ class CustomTrends extends StatelessWidget {
               "view_more".tr(),
               style: AppTheme.bodySmall,
             ),
-            SizedBox(
+            const SizedBox(
               width: 3,
             ),
-            Icon(
+            const Icon(
               size: 10,
               Icons.arrow_forward_ios_sharp,
               color: AppColors.grey60,
             ),
           ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         SizedBox(
           height: 172,
           child: ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: 3,
@@ -56,11 +58,11 @@ class CustomTrends extends StatelessWidget {
               final trendsList = getTrendModelFromJson(jsonString);
               final trend = trendsList[index];
               return TrendCustomCard(
-                trendModel: trend!,
+                trendModel: trend,
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              return VerticalDivider(
+              return const VerticalDivider(
                 width: 8,
               );
             },

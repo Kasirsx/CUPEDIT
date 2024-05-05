@@ -86,7 +86,7 @@ class AppColors {
   static const teal = Colors.teal;
   static const blue = Colors.blueAccent;
   static const lightBlueAccent = Colors.lightBlueAccent;
-  static const black12 = Colors.black12;
+  static const black12 = Color(0xFF404040);
 
   static const red = Colors.red;
   static const LinearGradient authColor = LinearGradient(
@@ -130,9 +130,9 @@ class AppColors {
       end: Alignment.bottomLeft // Adjust end alignment for spread effect
   );
 
-  static Color grey70 = Color(0xFFEDF5F5);
-  static Color grey40 =Color(0xFFFAFAFA);
-  static Color grey50 = Color(0xFFF5F5F5);
+  static Color grey70 = const Color(0xFFEDF5F5);
+  static Color grey40 =const Color(0xFFFAFAFA);
+  static Color grey50 = const Color(0xFFF5F5F5);
   static const grey350 = Color.fromRGBO(189, 189, 189, 1);
 
   static const cyan = Color(0xff41C9E2);

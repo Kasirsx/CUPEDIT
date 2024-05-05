@@ -29,7 +29,7 @@ class SettingCardCustom extends StatelessWidget {
               title != null ? title! : "",
               style: AppTheme.bodySmall.copyWith(color: AppColors.black),
             ),
-            widget != null ? widget! : SizedBox(),
+            widget != null ? widget! : const SizedBox(),
           ],
         ),
       ),

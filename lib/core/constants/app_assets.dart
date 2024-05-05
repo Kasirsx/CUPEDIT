@@ -108,17 +108,83 @@ class AppAssets {
   static const String manageAccountsIcon =
       '${baseDrawerMenuURI}manage_account.png';
 
-
-
   ////New Project
   static const String baseNewProject = '${baseAssetsURI}new_project/';
   static const String cancelNewProject = '${baseNewProject}close.png';
-  static const String saveEditImageOrVideoNewProject = '${baseNewProject}save_edit_image_or_video.png';
+  static const String saveEditImageOrVideoNewProject =
+      '${baseNewProject}save_edit_image_or_video.png';
 
-  ////New Project
+  ////base_edit_items
+  static const String baseEditItems = '${baseAssetsURI}edit_items/';
+  static const String aspectRatioItem = '${baseEditItems}aspect_ratio.png';
+  static const String audioItem = '${baseEditItems}audio.png';
+  static const String backgroundItem = '${baseEditItems}background.png';
+  static const String adjustItem = '${baseEditItems}adjust.png';
+  static const String cutItem = '${baseEditItems}cut.png';
+  static const String effectsItem = '${baseEditItems}effects.png';
+  static const String filtersItem = '${baseEditItems}filters.png';
+  static const String textItem = '${baseEditItems}text.png';
+  static const String layersItem = '${baseEditItems}layers.png';
+  static const String overlayItem = '${baseEditItems}overlay.png';
 
+  ///audio_edit
+  static const String baseAudioEdit = '${baseAssetsURI}audio_edit/';
+  static const String copyrightAudioEdit = '${baseAudioEdit}copyright.png';
+  static const String extractAudioEdit = '${baseAudioEdit}extract.png';
+  static const String recordAudioEdit = '${baseAudioEdit}record.png';
+  static const String soundFxAudioEdit = '${baseAudioEdit}sound_fx.png';
+  static const String soundsAudioEdit = '${baseAudioEdit}sounds.png';
 
+  ///text_edit
+  static const String baseTextEdit = '${baseAssetsURI}text_edit/';
+  static const String addTextTextEdit = "${baseTextEdit}add_text.png";
+  static const String autoCaptionsTextEdit = "${baseTextEdit}auto_lyrics.png";
+  static const String autoLyricsTextEdit = "${baseTextEdit}auto_captions.png";
+  static const String drawTextEdit = "${baseTextEdit}draw.png";
+  static const String stickersTextEdit = "${baseTextEdit}stickers.png";
+  static const String textTemplateTextEdit = "${baseTextEdit}text_template.png";
 
+  ///effects_edit
+  static const String baseEffectsEdit = '${baseAssetsURI}effects_edit/';
+  static const String bodyEffectsEffectsEdit =
+      "${baseEffectsEdit}body_effects.png";
+  static const String photoEffectsEffectsEdit =
+      "${baseEffectsEdit}photo_effects.png";
+  static const String videoEffectsEffectsEdit =
+      "${baseEffectsEdit}video_effects.png";
 
+  ///background_edit
+  static const String baseBackgroundEdit = '${baseAssetsURI}background_edit/';
+  static const String blurBackgroundEdit = "${baseBackgroundEdit}blur.png";
+  static const String colorBackgroundEdit = "${baseBackgroundEdit}color.png";
+  static const String imageBackgroundEdit = "${baseBackgroundEdit}image.png";
 
+  ///edit_edit
+  static const String baseEditEdit = '${baseAssetsURI}edit_edit/';
+  static const String splitEditEdit = '${baseEditEdit}split.png';
+  static const String speedEditEdit = '${baseEditEdit}speed.png';
+  static const String animationEditEdit = '${baseEditEdit}animation.png';
+  static const String styleEditEdit = '${baseEditEdit}style.png';
+  static const String deleteEditEdit = '${baseEditEdit}delete.png';
+  static const String enhanceVoiceEditEdit = '${baseEditEdit}enhance_voice.png';
+  static const String isolateVoiceEditEdit = '${baseEditEdit}isolate_voice.png';
+  static const String retouchEditEdit = '${baseEditEdit}retouch.png';
+  static const String volumeEditEdit = '${baseEditEdit}volume.png';
+  static const String transformEditEdit = '${baseEditEdit}transform.png';
+  static const String autoReframeEditEdit = '${baseEditEdit}auto_reframe.png';
+  static const String removeBGEditEdit = '${baseEditEdit}remove_bg.png';
+  static const String basicEditEdit = '${baseEditEdit}basic.png';
+  static const String editOnHypicEditEdit = '${baseEditEdit}edit_on_hypic.png';
+  static const String maskEditEdit = '${baseEditEdit}mask.png';
+  static const String duplicateEditEdit = '${baseEditEdit}duplicate.png';
+  static const String replicateEditEdit = '${baseEditEdit}replicate.png';
+  static const String extractAudioEditEdit = '${baseEditEdit}extractAudio.png';
+  static const String motionBlurEditEdit = '${baseEditEdit}motion_blur.png';
+  static const String stabilizeEditEdit = '${baseEditEdit}stabilize.png';
+  static const String opacityEditEdit = '${baseEditEdit}opacity.png';
+  static const String reverseEditEdit = '${baseEditEdit}reverse.png';
+  static const String freezeEditEdit = '${baseEditEdit}freeze.png';
+  static const String voiceEffectsEditEdit = '${baseEditEdit}voice_effects.png';
+  static const String reduceNoiseEditEdit = '${baseEditEdit}reduce_noise.png';
+  static const String beatsEditEdit = '${baseEditEdit}beats.png';
 }

@@ -1,5 +1,5 @@
-import 'package:cupcat/core/constants/app_colors.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +27,9 @@ class InboxAppBar extends StatelessWidget implements PreferredSizeWidget {
         indicatorColor: AppColors.black,
         labelColor: AppColors.black,
         unselectedLabelColor: AppColors.grey60,
-        indicatorPadding: EdgeInsets.all(0.0),
+        indicatorPadding: const EdgeInsets.all(0.0),
         indicatorWeight: 4.0,
-        labelPadding: EdgeInsets.only(left: 2.0, right: 2.0),
+        labelPadding: const EdgeInsets.only(left: 2.0, right: 2.0),
         tabs: translatedStrings.map((String tabName) {
           return Tab(
             child: Text(
@@ -44,7 +44,7 @@ class InboxAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize {
-    final double appBarHeight = kToolbarHeight + kTextTabBarHeight;
-    return Size.fromHeight(appBarHeight);
+    const double appBarHeight = kToolbarHeight + kTextTabBarHeight;
+    return const Size.fromHeight(appBarHeight);
   }
 }

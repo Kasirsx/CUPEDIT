@@ -29,8 +29,8 @@ class InboxCardCustom extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(Icons.edit),
-                    Expanded(
+                    const Icon(Icons.edit),
+                    const Expanded(
                       child: Text("System Notification",
                           style: TextStyle(
                               fontSize: 12,
@@ -43,23 +43,23 @@ class InboxCardCustom extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(title,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 12,
                         color: AppColors.black,
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(subtitle,
                     style: TextStyle(fontSize: 11, color: AppColors.grey)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("View more",

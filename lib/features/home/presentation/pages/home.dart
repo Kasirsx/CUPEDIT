@@ -1,12 +1,12 @@
-import 'package:cupcat/core/animations/navigation_route_animation/navigation_route_animation.dart';
-import 'package:cupcat/features/edit_new_project/presentation/pages/new_project_page.dart';
-import 'package:cupcat/features/edit_new_project/presentation/widgets/select_type_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
 import '/core/widgets/custom_image.dart';
+import '/features/edit_new_project/presentation/pages/new_project_page.dart';
+import '/features/edit_new_project/presentation/widgets/select_type_dialog.dart';
 import '/features/home/presentation/widgets/general_home_page_scaffold.dart';
 import '/features/home/presentation/widgets/grid_tranzlation_and_icons.dart';
 import '/features/home/presentation/widgets/home_new_project_card.dart';
@@ -61,9 +61,12 @@ class _HomeState extends State<Home> {
                     maxCount: 10,
                     requestType: RequestType.common,
                   );*/
-                  AnimationNavigation.slidePush(context, NewProjectPage(),);
+                  AnimationNavigation.slidePush(
+                    context,
+                    const NewProjectPage(),
+                  );
 
-                 /* _selectAssetsType(context);
+                  /* _selectAssetsType(context);
                   //pickVideo(context);
                   print("object");*/
                   //AnimationNavigation.slidePush(context, NewProjectPage());
@@ -90,7 +93,7 @@ class _HomeState extends State<Home> {
 void _selectAssetsType(BuildContext context) {
   showDialog(
     context: context,
-    builder: (context) => SelectAssetsType(),
+    builder: (context) => const SelectAssetsType(),
   );
 }
 

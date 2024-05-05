@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
       ),
       icon: Icon(
         icon,
-        color: Colors.indigoAccent.withOpacity(0.7), // TODO to edit
+        color: Colors.indigoAccent.withOpacity(0.7), // TODO to edit_edit
         size: iconSize,
       ),
       onPressed: onPressed,
@@ -81,7 +81,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
             widget.icon,
             color: widget.iconColor,
             /* color: iconColor == AppColors.grey
-                ? Colors.indigoAccent.withOpacity(0.7) // TODO to edit
+                ? Colors.indigoAccent.withOpacity(0.7) // TODO to edit_edit
                 : AppColors.white.withOpacity(0.7),*/
             size: iconSize,
           ),
@@ -133,7 +133,7 @@ class CustomTextButton extends StatelessWidget {
                   color: color == AppColors.grey
                       ? AppColors.primaryColor
                       : titleColor,
-                ), // TODO to edit
+                ), // TODO to edit_edit
       ),
     );
   }

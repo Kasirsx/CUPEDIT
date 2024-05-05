@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:wechat_assets_picker/wechat_assets_picker.dart';
+
 //import 'wechat_assets_picker/src/delegates/asset_picker_builder_delegate.dart';
 
 import '/core/constants/app_assets.dart';
 import '/core/constants/app_colors.dart';
 import '/core/utils/navigation.dart';
 import '/core/widgets/custom_image.dart';
+import '/features/home/presentation/pages/homeScreen.dart';
 
 class GeneralNewProjectScaffold extends StatelessWidget {
   const GeneralNewProjectScaffold({
     super.key,
     this.body,
     this.index,
+    this.horizontal = 0,
+    this.vertical = 0,
   });
 
   final Widget? body;
+  final double vertical;
+  final double horizontal;
 
   final int? index;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
+      backgroundColor: AppColors.black12,
       resizeToAvoidBottomInset: false,
       appBar: _buildAppBar(context),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding:
+            EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
         child: body ?? const SizedBox(),
       ),
     );
@@ -36,10 +42,10 @@ class GeneralNewProjectScaffold extends StatelessWidget {
       case 0:
         return AppBar(
           elevation: 0.0,
-          backgroundColor: AppColors.black,
+          backgroundColor: AppColors.black12,
           leading: IconButton(
             onPressed: () {
-              Navigation.pop(context);
+              Navigation.pushAndRemoveUntil(context, const HomeScreen());
             },
             icon: const Icon(
               Icons.cancel_outlined,
@@ -90,6 +96,4 @@ class GeneralNewProjectScaffold extends StatelessWidget {
     }
     return null;
   }
-
-
 }

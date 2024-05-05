@@ -7,6 +7,8 @@ import '../widgets/interactions.dart';
 import '../widgets/official1.dart';
 
 class Inbox extends StatelessWidget {
+  const Inbox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -18,8 +20,8 @@ class Inbox extends StatelessWidget {
         body: TabBarView(
           children: [
             CapCutOfficial(),
-            TabInteraction(),
-            TabFeatures(),
+            const TabInteraction(),
+            const TabFeatures(),
           ],
         ),
       ),

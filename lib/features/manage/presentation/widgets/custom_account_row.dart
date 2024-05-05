@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../../core/widgets/buttons/main_elevated_button.dart';
-import '../../../../../../../../core/widgets/custom_image.dart';
 import '../../../../core/constants/app_theme.dart';
 import 'curom_row_widget.dart';
 
@@ -24,7 +22,7 @@ class CustomRowAccount extends StatelessWidget {
       image: image,
       firstWidget: widge,
       secondWidget: showLinkButton!
-          ? Container(
+          ? SizedBox(
               height: 30,
               child: MainElevatedButton(
                 textStyle: AppTheme.bodySmall.copyWith(color: AppColors.white),
@@ -33,7 +31,7 @@ class CustomRowAccount extends StatelessWidget {
                 onPressed: () {},
               ),
             )
-          : SizedBox(),
+          : const SizedBox(),
     );
   }
 }

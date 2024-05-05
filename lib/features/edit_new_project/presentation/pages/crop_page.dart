@@ -3,7 +3,10 @@ import 'package:fraction/fraction.dart';
 import 'package:video_editor/video_editor.dart';
 
 class CropPage extends StatelessWidget {
-  const CropPage({super.key, required this.controller});
+  const CropPage({
+    super.key,
+    required this.controller,
+  });
 
   final VideoEditorController controller;
 
@@ -64,28 +67,28 @@ class CropPage extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () =>
-                            controller.preferredCropAspectRatio = controller
-                                .preferredCropAspectRatio
-                                ?.toFraction()
-                                .inverse()
-                                .toDouble(),
+                                controller.preferredCropAspectRatio = controller
+                                    .preferredCropAspectRatio
+                                    ?.toFraction()
+                                    .inverse()
+                                    .toDouble(),
                             icon: controller.preferredCropAspectRatio != null &&
-                                controller.preferredCropAspectRatio! < 1
+                                    controller.preferredCropAspectRatio! < 1
                                 ? const Icon(
-                                Icons.panorama_vertical_select_rounded)
+                                    Icons.panorama_vertical_select_rounded)
                                 : const Icon(Icons.panorama_vertical_rounded),
                           ),
                           IconButton(
                             onPressed: () =>
-                            controller.preferredCropAspectRatio = controller
-                                .preferredCropAspectRatio
-                                ?.toFraction()
-                                .inverse()
-                                .toDouble(),
+                                controller.preferredCropAspectRatio = controller
+                                    .preferredCropAspectRatio
+                                    ?.toFraction()
+                                    .inverse()
+                                    .toDouble(),
                             icon: controller.preferredCropAspectRatio != null &&
-                                controller.preferredCropAspectRatio! > 1
+                                    controller.preferredCropAspectRatio! > 1
                                 ? const Icon(
-                                Icons.panorama_horizontal_select_rounded)
+                                    Icons.panorama_horizontal_select_rounded)
                                 : const Icon(Icons.panorama_horizontal_rounded),
                           ),
                         ],

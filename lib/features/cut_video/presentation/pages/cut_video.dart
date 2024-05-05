@@ -7,30 +7,33 @@ import 'package:video_editor/video_editor.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
 import '/core/widgets/loading.dart';
+import '/features/edit_new_project/items_cubit/items_list_cubit.dart';
 import '/features/edit_new_project/presentation/pages/crop_page.dart';
 import '/features/edit_new_project/presentation/widgets/export_result.dart';
 import '/features/edit_new_project/presentation/widgets/export_service.dart';
 import '/features/edit_new_project/presentation/widgets/general_new_project_scaffold.dart';
 
-class EditVideos extends StatefulWidget {
-  const EditVideos({
+class CutVideos extends StatefulWidget {
+  const CutVideos({
     super.key,
-    this.file,
+    required this.file,
+    this.itemsListCubit,
   });
 
-  final File? file;
+  final File file;
+  final ItemsListCubit? itemsListCubit;
 
   @override
-  State<EditVideos> createState() => _EditVideosState();
+  State<CutVideos> createState() => _CutVideosState();
 }
 
-class _EditVideosState extends State<EditVideos> {
+class _CutVideosState extends State<CutVideos> {
   final _exportingProgress = ValueNotifier<double>(0.0);
   final _isExporting = ValueNotifier<bool>(false);
   final double height = 60;
 
   late final VideoEditorController _controller = VideoEditorController.file(
-    widget.file!,
+    widget.file,
     minDuration: const Duration(seconds: 1),
     maxDuration: const Duration(seconds: 10),
   );
@@ -200,7 +203,7 @@ class _EditVideosState extends State<EditVideos> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               child: Icon(
                                                 Icons.content_cut,
                                                 color: currentTapBar == 1
@@ -224,7 +227,7 @@ class _EditVideosState extends State<EditVideos> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               child: Icon(
                                                 Icons.video_label,
                                                 color: currentTapBar == 0
@@ -255,7 +258,7 @@ class _EditVideosState extends State<EditVideos> {
                                                 MainAxisAlignment.center,
                                             children: _trimSlider(),
                                           ),
-                                          _coverSelection(),
+                                         // _coverSelection(),
                                         ],
                                       ),
                                     ),
