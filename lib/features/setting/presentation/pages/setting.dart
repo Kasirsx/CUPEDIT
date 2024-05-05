@@ -7,6 +7,8 @@ import '/features/setting/presentation/widgets/custom_switch_widget.dart';
 import '/features/setting/presentation/widgets/setting_card_custom.dart';
 
 class Setting extends StatelessWidget {
+  const Setting({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +18,7 @@ class Setting extends StatelessWidget {
         children: [
           SettingCardCustom(
             title: "add_default_ending".tr(),
-            widget: CustomSwitchWidget(),
+            widget:  const CustomSwitchWidget(),
           ),
           SettingCardCustom(
             title: "add_default_ending".tr(),

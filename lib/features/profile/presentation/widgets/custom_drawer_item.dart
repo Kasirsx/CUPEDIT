@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_theme.dart';
 import '../../../../core/widgets/custom_image.dart';
 
@@ -9,7 +8,7 @@ class CustomDrawerItem extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
 
-  const CustomDrawerItem({
+  const CustomDrawerItem({super.key, 
     required this.image,
     required this.text,
     required this.onTap,

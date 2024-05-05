@@ -7,6 +7,8 @@ import '../../../../../core/widgets/custom_image.dart';
 import 'custom_inkwell.dart';
 
 class CustomEditProfile extends StatelessWidget {
+  const CustomEditProfile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +36,7 @@ class CustomEditProfile extends StatelessWidget {
             Expanded(
               child: CustomInkwell(
                 height: 40,
-                child: Icon(Icons.share),
+                child: const Icon(Icons.share),
               ),
             ),
           ].expand((x) => [const SizedBox(width: 10), x]).skip(1).toList()),

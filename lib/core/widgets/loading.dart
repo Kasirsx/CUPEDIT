@@ -19,8 +19,7 @@ class LoadingWidget extends StatelessWidget {
         return DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15), //border corner radius
-            color:
-                color ?? AppColors.primaryColor,
+            color: color ?? AppColors.primaryColor,
           ),
         );
       },

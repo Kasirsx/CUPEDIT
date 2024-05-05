@@ -8,7 +8,7 @@ class CustomColumn extends StatelessWidget {
   final String? subTitle;
   final Widget? additionalCard;
 
-  CustomColumn({
+  const CustomColumn({super.key, 
     this.title,
     this.subTitle,
     this.additionalCard,
@@ -22,13 +22,13 @@ class CustomColumn extends StatelessWidget {
         Row(
           children: [
             Text(title!, style: AppTheme.headline6),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             if (additionalCard != null) additionalCard!,
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 6,
         ),
         Text(subTitle!,

@@ -7,23 +7,23 @@ class CustomRow extends StatelessWidget {
   final String text;
   final Widget? trailingIcon;
 
-  CustomRow({this.leadingIcon, required this.text, this.trailingIcon});
+  const CustomRow({super.key, this.leadingIcon, required this.text, this.trailingIcon});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 1),
+      margin: const EdgeInsets.symmetric(vertical: 1),
       child: Row(
         children: [
           if (leadingIcon != null) leadingIcon!,
-          SizedBox(
+          const SizedBox(
             width: 6,
           ),
           Text(
             text,
             style: AppTheme.bodyText1,
           ),
-          SizedBox(
+          const SizedBox(
             width: 6,
           ),
           if (trailingIcon != null) trailingIcon!,

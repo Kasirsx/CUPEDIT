@@ -14,6 +14,9 @@
   "by_email": "By Email",
   "edit": "Edit",
   "add": "Add",
+  "image": "Image",
+  "video": "Video",
+  "color": "Color",
   "show_more": "Show more",
   "show_less": "Show less",
   "pull_up_load": "Pull up load",
@@ -83,6 +86,9 @@
   "clarify_your_location_using_photo": "Clarify your location using photo!",
   "=================home_page================": "=====================",
   "photo_edit": "Photo edit",
+  "templates": "Templates",
+  "inbox": "Inbox",
+  "me": "Me",
   "text_to_image": "Text to image",
   "autoCut": "AutoCut",
   "prodect_photo": "Product photo",
@@ -97,12 +103,84 @@
   "press_and_drag_to_reorder": "Press and drag to reorder",
   "new_project": "New Project",
   "space": "Space",
-
   "=================New_project================": "=====================",
   "albums": "Albums",
   "kasirsx": "Kasirsx",
   "library": "Library",
   "videos": "Videos",
   "photos": "Photos",
-  "images": "Images"
+  "images": "Images",
+  "there_is_no_images": "There is no images",
+  "there_is_no_videos": "There is no videos",
+  "there_is_no_data": "There is no data",
+
+
+  "=================edit_tool================": "=====================",
+  "audio": "Audio",
+  "edit_edit": "Edit",
+  "text": "Text",
+  "overlay": "Overlay",
+  "effects_edit": "Effects edit",
+  "aspect_ratio": "Aspect ratio",
+  "filters": "Filters",
+  "adjust": "Adjust",
+  "stickers": "Stickers",
+  "background": "Background",
+
+
+  "=================Audio_edit================": "=====================",
+  "sounds": "Sounds",
+  "copyright": "Copyright",
+  "sound_fx": "Sound Fx",
+  "extract": "Extract",
+  "record": "Record",
+
+  "=================Text_edit================": "=====================",
+  "add_text": "Add text",
+  "text_template": "Text template",
+  "auto_lyrics": "Auto lyrics",
+  "draw": "Draw",
+
+  "=================Overlay_edit================": "=====================",
+  "add_overlay": "Add overlay",
+
+
+
+  "=================Effects_edit================": "=====================",
+  "video_effects": "Video effects",
+  "body_effects": "Body effects",
+  "photo_effects": "Photo effects",
+
+
+  "=================background_edit================": "=====================",
+
+  "blur": "Blur",
+
+  "=================edit_edit================": "=====================",
+  "split": "Split",
+  "speed": "Speed",
+  "animations": "Animations",
+  "style": "Style",
+  "delete": "Delete",
+  "enhance_voice": "Enhance voice",
+  "isolate_voice": "Isolate voice",
+  "volume": "Volume",
+  "transform": "Transform",
+  "auto_reframe": "Auto reframe",
+  "remove_bg": "Remove BG",
+  "basic": "Basic",
+  "edit_on_hypic": "Edit on hypic",
+  "mask": "Mask",
+  "duplicate": "Duplicate",
+  "replace": "Replace",
+  "extract_audio": "Extract audio",
+  "motion_blur": "Motion blur",
+  "stabilize": "Stabilize",
+  "opacity": "Opacity",
+  "reverse": "Reverse",
+  "freeze": "Freeze",
+  "voice_effects": "Voice effects",
+  "reduce_noise": "Reduce noise",
+  "beats": "Beats"
+
 }

@@ -1,14 +1,16 @@
-import 'package:cupcat/features/home/presentation/pages/home.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/widgets/custom_image.dart';
-import '../../../Inbox/presentation/pages/inbox.dart';
-import '../../../profile/presentation/pages/Profile.dart';
+import '/core/constants/app_assets.dart';
+import '/core/constants/app_colors.dart';
+import '/core/widgets/custom_image.dart';
+import '/features/Inbox/presentation/pages/inbox.dart';
+import '/features/home/presentation/pages/home.dart';
+import '/features/profile/presentation/pages/Profile.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   HomeScreenState createState() => HomeScreenState();
 }
@@ -17,16 +19,15 @@ class HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Home(),
-    Profile(),
-    Inbox(),
-    Profile(),
+    const Home(),
+    const Profile(),
+    const Inbox(),
+    const Profile(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -46,7 +47,7 @@ class HomeScreenState extends State<HomeScreen> {
             icon: Container(
               height: 24,
               width: 24,
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               child: CustomImage.rectangle(
                 color: _currentIndex == 0 ? AppColors.black : AppColors.grey,
                 image: AppAssets.cutIcon,
@@ -57,15 +58,15 @@ class HomeScreenState extends State<HomeScreen> {
             label: 'edit'.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
             label: 'templates'.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
+            icon: const Icon(Icons.notifications),
             label: 'inbox'.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
             label: 'me'.tr(),
           ),
         ],
@@ -73,5 +74,3 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-

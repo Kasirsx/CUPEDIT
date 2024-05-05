@@ -38,18 +38,17 @@
 //     );
 //   }
 // }
-import 'package:cupcat/core/constants/app_assets.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
-import 'package:cupcat/core/widgets/custom_image.dart';
-import 'package:cupcat/features/profile/presentation/widgets/custom_drawer_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../../core/utils/navigation.dart';
 import '../../../../core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '../../../manage/presentation/pages/manage_account.dart';
+import '/core/constants/app_assets.dart';
+import '/features/profile/presentation/widgets/custom_drawer_item.dart';
 
 class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -69,7 +68,7 @@ class CustomDrawer extends StatelessWidget {
             text: 'manage_accounts'.tr(),
             image: AppAssets.manageAccountsIcon,
             onTap: () {
-              AnimationNavigation.slidePush(context, ManageAcccount());
+              AnimationNavigation.slidePush(context, const ManageAcccount());
             },
           ),
 

@@ -13,10 +13,10 @@ class ListViewAnimations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return AnimationLimiter(
       child: ListView.builder(
-        padding: EdgeInsets.all(_w / 30),
+        padding: EdgeInsets.all(w / 30),
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
         itemCount: itemCount,
@@ -37,7 +37,7 @@ class ListAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
     return AnimationConfiguration.staggeredList(
       position: index,
       delay: const Duration(milliseconds: 100),

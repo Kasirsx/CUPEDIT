@@ -1,13 +1,14 @@
-import 'package:cupcat/core/constants/app_colors.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
+
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
 
 class CustomCard extends StatelessWidget {
   final String? title;
   final String? subTitle;
   final Icon? icon;
 
-  CustomCard({this.title, this.subTitle, this.icon});
+  const CustomCard({super.key, this.title, this.subTitle, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CustomCard extends StatelessWidget {
       child: Container(
         height: 69,
         // Quarter of screen height
-        padding: EdgeInsets.symmetric(horizontal: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 7),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.grey40,
@@ -31,8 +32,8 @@ class CustomCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            icon != null ? icon! : SizedBox(),
-            SizedBox(
+            icon != null ? icon! : const SizedBox(),
+            const SizedBox(
               width: 9,
             ),
             Flexible(

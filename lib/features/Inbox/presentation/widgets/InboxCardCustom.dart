@@ -1,10 +1,9 @@
-import 'package:cupcat/core/constants/app_theme.dart';
-import 'package:cupcat/features/Inbox/presentation/widgets/official1.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/constants/app_colors.dart';
 import '../data/system_notification.dart';
+import '/core/constants/app_theme.dart';
 
 class InboxCardCustom extends StatelessWidget {
   final SystemNotification systemNotification;
@@ -29,7 +28,7 @@ class InboxCardCustom extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.cut),
+                const Icon(Icons.cut),
                 Expanded(
                   child: Text("system_notification".tr(),
                       style: AppTheme.headline3),
@@ -42,7 +41,7 @@ class InboxCardCustom extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -50,7 +49,7 @@ class InboxCardCustom extends StatelessWidget {
                     ? systemNotification.title!
                     : "",
                 style: AppTheme.headline6),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -58,14 +57,14 @@ class InboxCardCustom extends StatelessWidget {
                     ? systemNotification.subtitle!
                     : "",
                 style: AppTheme.bodySmall.copyWith(color: AppColors.grey)),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("view_more".tr(), style: AppTheme.bodyText1),
-                Icon(Icons.chevron_right),
+                const Icon(Icons.chevron_right),
               ],
             ),
           ],

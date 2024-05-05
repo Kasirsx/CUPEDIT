@@ -27,7 +27,7 @@ class GeneralManageScaffold extends StatelessWidget {
               onPressed: () {
                 // Add your onPressed logic here
               },
-              icon: Icon(Icons.arrow_forward_ios_sharp)),
+              icon: const Icon(Icons.arrow_forward_ios_sharp)),
         ],
       ),
       backgroundColor: backgroundColor ?? AppColors.white,

@@ -1,8 +1,8 @@
-import 'package:cupcat/core/constants/app_assets.dart';
-import 'package:cupcat/core/constants/app_colors.dart';
-import 'package:cupcat/core/constants/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '/core/constants/app_colors.dart';
+import '/core/constants/app_theme.dart';
 
 class ProfileRectangle extends StatelessWidget {
   const ProfileRectangle({
@@ -15,7 +15,7 @@ class ProfileRectangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           gradient: AppColors.ProfilCardGradinet,
           borderRadius: BorderRadius.circular(4),

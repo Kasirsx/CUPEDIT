@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/constants/app_styles.dart';
@@ -8,14 +7,14 @@ class CustomInkwell extends StatelessWidget {
   double? height;
   final VoidCallback? onTap;
 
-  CustomInkwell({required this.child, this.height, this.onTap});
+  CustomInkwell({super.key, required this.child, this.height, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: height,
         alignment: Alignment.center,
         decoration: AppStyles.defaultBoxDecoration

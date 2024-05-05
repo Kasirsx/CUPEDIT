@@ -7,6 +7,8 @@ import '/core/constants/app_theme.dart';
 import '/features/setting/presentation/pages/setting.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -22,7 +24,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
-            AnimationNavigation.slidePush(context, Setting());
+            AnimationNavigation.slidePush(context, const Setting());
           },
           icon: const Icon(
             Icons.settings,

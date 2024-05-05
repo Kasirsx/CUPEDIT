@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '/core/constants/app_colors.dart';
-import '/core/constants/app_theme.dart';
 import 'app_bar_custom.dart';
 
 class GeneralHomePageScaffold extends StatelessWidget {

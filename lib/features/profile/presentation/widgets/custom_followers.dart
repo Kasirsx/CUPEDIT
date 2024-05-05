@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'custom_column.dart';
 
 class CustomFollowersWidget extends StatelessWidget {
+  const CustomFollowersWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +15,7 @@ class CustomFollowersWidget extends StatelessWidget {
             title: '0',
             subTitle: 'followers'.tr(),
           ),
-          SizedBox(width: 22),
+          const SizedBox(width: 22),
           CustomColumn(
             title: '1',
             subTitle: 'following'.tr(),

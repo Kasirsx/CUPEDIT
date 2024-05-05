@@ -15,10 +15,12 @@ class CapCutOfficial extends StatelessWidget {
       'subtitle': 'try feature lke retouch ,reshap and makeup to add extra polish to your creations.download the CapCute desktop app and see for your self now !'},
   ];
 
+   CapCutOfficial({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:EdgeInsets.all(8) ,
+      padding:const EdgeInsets.all(8) ,
       color: AppColors.grey4,
 
             child: MyCard(dataList: dataList),

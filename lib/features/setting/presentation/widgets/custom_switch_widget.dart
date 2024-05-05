@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cupcat/core/constants/app_colors.dart';
+
+import '/core/constants/app_colors.dart';
 
 class CustomSwitchWidget extends StatefulWidget {
+  const CustomSwitchWidget({super.key});
+
   @override
   _CustomSwitchWidgetState createState() => _CustomSwitchWidgetState();
 }
