@@ -290,12 +290,10 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 ),
                 IconButton(
                   onPressed: () {
-                    //  mergeVideos(context);
+                      mergeVideos(context);
                   },
-                  icon: const Center(
-                    child: Icon(
-                      Icons.add,
-                    ),
+                  icon: const Icon(
+                    Icons.add,
                   ),
                 ),
               ],

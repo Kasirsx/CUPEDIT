@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 
 class RemoveAudioScreen extends StatefulWidget {
+  const RemoveAudioScreen({super.key});
+
   @override
   _RemoveAudioScreenState createState() => _RemoveAudioScreenState();
 }
@@ -11,8 +13,8 @@ class RemoveAudioScreen extends StatefulWidget {
 class _RemoveAudioScreenState extends State<RemoveAudioScreen> {
   final FFmpegKit _flutterFFmpeg = FFmpegKit();
 
-  String _inputVideoPath = '/storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video/VID-20240219-WA0024.mp4';
-  String _outputVideoPath = '/storage/emulated/0/Android/media/hany.mp4';
+  final String _inputVideoPath = '/storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video/VID-20240219-WA0024.mp4';
+  final String _outputVideoPath = '/storage/emulated/0/Android/media/hany.mp4';
 
   void _removeAudioFromVideo() async {
     final String command = '-i $_inputVideoPath -c copy -an $_outputVideoPath';
@@ -35,16 +37,16 @@ class _RemoveAudioScreenState extends State<RemoveAudioScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Remove Video Audio'),
+        title: const Text('Remove Video Audio'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             ElevatedButton(
-              child: Text('Remove Audio'),
               onPressed: _removeAudioFromVideo,
+              child: const Text('Remove Audio'),
             ),
           ],
         ),

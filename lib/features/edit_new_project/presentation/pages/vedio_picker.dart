@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:flutter/material.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
@@ -277,15 +278,20 @@ class _VideoPickerState extends State<VideoPicker> {
                                 File? path = await asset.file;
                                 if (path != null) {
                                   print(path.path);
-                                  AnimationNavigation.scalePushReplacement(
+
+
+                                  FFmpegKitConfig.init().then((value) => AnimationNavigation.scalePushReplacement(
                                     context,
                                     /*CutVideos(
                                       file: File(path.path),
                                     ),*/
-                                        GeneralEditVideos(
+                                    GeneralEditVideos(
                                       file: File(path.path),
                                     ),
-                                  );
+                                  ));
+
+
+
                                   print('Selected Asset Path: $path');
                                 }
                               }
