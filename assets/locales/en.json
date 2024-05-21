@@ -28,6 +28,7 @@
   "connection_error": "Connection Error",
   "conflict_error": "Conflict Error",
   "cancel_error": "Cancel Error",
+  "cancel": "Cancel",
   "bad_request_error": "Bad Request Error",
   "account_not_verified_error": "Account Not Verified Error",
   "discover": "Discover",
@@ -36,7 +37,7 @@
   "please_try_again_with_another": "Please try another search",
   "success": "Success",
   "loading": "Loading",
-  "tap_to_retry": "tap to return",
+  "tap_to_retry": "Tap to return",
   "Failed": "Failed",
   "password": "Password",
   "must_not_be_empty": "Must not be empty",
@@ -113,8 +114,6 @@
   "there_is_no_images": "There is no images",
   "there_is_no_videos": "There is no videos",
   "there_is_no_data": "There is no data",
-
-
   "=================edit_tool================": "=====================",
   "audio": "Audio",
   "edit_edit": "Edit",
@@ -126,36 +125,25 @@
   "adjust": "Adjust",
   "stickers": "Stickers",
   "background": "Background",
-
-
   "=================Audio_edit================": "=====================",
   "sounds": "Sounds",
   "copyright": "Copyright",
   "sound_fx": "Sound Fx",
   "extract": "Extract",
   "record": "Record",
-
   "=================Text_edit================": "=====================",
   "add_text": "Add text",
   "text_template": "Text template",
   "auto_lyrics": "Auto lyrics",
   "draw": "Draw",
-
   "=================Overlay_edit================": "=====================",
   "add_overlay": "Add overlay",
-
-
-
   "=================Effects_edit================": "=====================",
   "video_effects": "Video effects",
   "body_effects": "Body effects",
   "photo_effects": "Photo effects",
-
-
   "=================background_edit================": "=====================",
-
   "blur": "Blur",
-
   "=================edit_edit================": "=====================",
   "split": "Split",
   "speed": "Speed",
@@ -181,6 +169,10 @@
   "freeze": "Freeze",
   "voice_effects": "Voice effects",
   "reduce_noise": "Reduce noise",
-  "beats": "Beats"
-
+  "beats": "Beats",
+  "=================merge_videos================": "=====================",
+  "select_video": "Select video",
+  "merging": "Merging...",
+  "merge_failed": "Merge failed",
+  "merge_canceled": "Merge canceled"
 }

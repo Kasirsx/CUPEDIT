@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+10
+version: 1.0.0+11
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
@@ -133,14 +133,16 @@ dependencies:
   #  video_editor_sdk: 3.1.0
   #  imgly_sdk: 3.1.0
   #  package_info_plus:
-  #  path:
-  #  path_provider:
+  path_provider: 2.1.2
   #  provider:
-#  video_trimmer: 3.0.1
-#  helpers: 1.2.3
+  #  video_trimmer: 3.0.1
+  #  helpers: 1.2.3
   fraction: 4.1.4
-#  flutter_vlc_player: 7.4.1
-  sqflite:
+  #  flutter_vlc_player: 7.4.1
+  #  sqflite:
+  permission_handler:
+
+
 
 
 
@@ -217,6 +219,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+
+
+
   fonts:
     - family: CustomIcons
       fonts:

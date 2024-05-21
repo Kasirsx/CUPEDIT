@@ -28,8 +28,11 @@ class GeneralEditVideos extends StatefulWidget {
   const GeneralEditVideos({
     super.key,
     this.file,
+    this.totalVideoDuration,
   });
 
+
+  final int? totalVideoDuration;
   final File? file;
 
   @override
@@ -45,7 +48,7 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
     print(widget.file);
     super.initState();
 
-    //loadVideo();
+
 
     itemsListCubit = ItemsListCubit();
     mediaProcessCubit = MediaProcessCubit(
@@ -57,7 +60,6 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
         .then((_) => setState(() {}))
         .catchError(
       (error) {
-        // handle minumum duration bigger than video duration error
         Navigator.pop(context);
       },
       test: (e) => e is VideoMinDurationError,
@@ -123,13 +125,6 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 ),
               ),
             ),
-
-/*            MainElevatedButton(
-                onPressed: () {
-                  itemsListCubit!.test();
-                },
-                text: "text"),*/
-
             BlocBuilder<ItemsListCubit, ListViewType>(
               bloc: itemsListCubit,
               builder: (context, state) {
@@ -242,9 +237,9 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                       seconds: pos.toInt(),
                     ),
                   ),
-                  style: AppTheme.bodySmall.copyWith(color: AppColors.white),
+                  style: AppTheme.bodySmall.copyWith(color: AppColors.white,),
                 ),
-                const Expanded(child: SizedBox()),
+                const Expanded(child: SizedBox(),),
                 AnimatedOpacity(
                   opacity: mediaProcessCubit!.controller.isTrimming ? 1 : 0,
                   duration: kThemeAnimationDuration,
@@ -290,12 +285,10 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 ),
                 IconButton(
                   onPressed: () {
-                    //  mergeVideos(context);
+                      mergeVideos(context);
                   },
-                  icon: const Center(
-                    child: Icon(
-                      Icons.add,
-                    ),
+                  icon: const Icon(
+                    Icons.add,
                   ),
                 ),
               ],
@@ -441,6 +434,7 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
       context: context,
       builder: (context) => MergeVideosPage(
         originalFile: widget.file,
+        totalVideoDuration: widget.totalVideoDuration,
       ),
     );
   }

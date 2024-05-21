@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:cupcat/features/void.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -34,11 +32,7 @@ Future<void> main() async {
   timeago.setLocaleMessages('ar', timeago.ArMessages());
   timeago.setLocaleMessages('en', timeago.EnMessages());
 
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
-  );
   AssetPicker.registerObserve();
-  // Enables logging with the photo_manager.
   PhotoManager.setLog(true);
 
   runApp(
@@ -107,8 +101,8 @@ class _MyAppState extends State<MyApp> {
 
   _getNextPage() {
     /* if (SharedStorage.hasToken()) {*/
-   //return RemoveAudioScreen();
-     return  HomeScreen();
+    //return RemoveAudioScreen();
+    return const HomeScreen();
     /*   } else {
       return const OnBoardingPage();
     }*/
