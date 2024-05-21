@@ -243,7 +243,7 @@ class _VideoPickerState extends State<VideoPicker> {
                             ],
                           );
                         } else {
-                          return Container();
+                          return const SizedBox();
                         }
                       },
                     ),
@@ -279,19 +279,20 @@ class _VideoPickerState extends State<VideoPicker> {
                                 if (path != null) {
                                   print(path.path);
 
-
-                                  FFmpegKitConfig.init().then((value) => AnimationNavigation.scalePushReplacement(
-                                    context,
-                                    /*CutVideos(
+                                  FFmpegKitConfig.init().then(
+                                    (value) => AnimationNavigation
+                                        .scalePushReplacement(
+                                      context,
+                                      /*CutVideos(
                                       file: File(path.path),
                                     ),*/
-                                    GeneralEditVideos(
-                                      file: File(path.path),
+                                      GeneralEditVideos(
+                                        totalVideoDuration:
+                                            asset.videoDuration.inMilliseconds,
+                                        file: File(path.path),
+                                      ),
                                     ),
-                                  ));
-
-
-
+                                  );
                                   print('Selected Asset Path: $path');
                                 }
                               }
@@ -432,7 +433,7 @@ class _VideoPickerState extends State<VideoPicker> {
         assetEntity.file.then((value) {
           print(value);
           selectedAssetPathList.add(value!);
-        });
+        },);
         //selectedAssetPathList.add(assetPathEntity!);
         print(widget.selectedAssetList);
       });

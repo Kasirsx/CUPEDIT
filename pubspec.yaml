@@ -133,7 +133,6 @@ dependencies:
   #  video_editor_sdk: 3.1.0
   #  imgly_sdk: 3.1.0
   #  package_info_plus:
-  #  path:
   path_provider: 2.1.2
   #  provider:
   #  video_trimmer: 3.0.1
@@ -142,6 +141,8 @@ dependencies:
   #  flutter_vlc_player: 7.4.1
   #  sqflite:
   permission_handler:
+
+
 
 
 
@@ -218,6 +219,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+
+
+
   fonts:
     - family: CustomIcons
       fonts:

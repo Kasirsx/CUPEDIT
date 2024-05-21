@@ -174,5 +174,5 @@
   "select_video": "Select video",
   "merging": "Merging...",
   "merge_failed": "Merge failed",
-  "merge_cancel": "Merge cancel"
+  "merge_canceled": "Merge canceled"
 }

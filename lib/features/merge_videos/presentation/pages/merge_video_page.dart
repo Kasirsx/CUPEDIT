@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:cupcat/core/utils/navigation.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ffmpeg_kit_flutter/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -14,9 +16,11 @@ class MergeVideosPage extends StatefulWidget {
   const MergeVideosPage({
     super.key,
     this.originalFile,
+    this.totalVideoDuration,
   });
 
   final File? originalFile;
+  final int? totalVideoDuration;
 
   @override
   State<MergeVideosPage> createState() => _MergeVideosPageState();
@@ -24,15 +28,17 @@ class MergeVideosPage extends StatefulWidget {
 
 class _MergeVideosPageState extends State<MergeVideosPage> {
   MergeVideosCubit? mergeVideosCubit;
-
-
+  late Statistics? statistics;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    mergeVideosCubit = MergeVideosCubit(widget.originalFile,);
+    statistics = null;
+    mergeVideosCubit = MergeVideosCubit(
+      originalFile: widget.originalFile,
+      originalVideoDuration: widget.totalVideoDuration!,
+    );
   }
 
   @override
@@ -65,7 +71,7 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
                 EasyLoading.showError('merge_failed'.tr());
               }
               if (state is CancelMergeVideos) {
-                EasyLoading.show(status: "merge_cancel".tr());
+                EasyLoading.showError("merge_canceled".tr());
               }
             },
             builder: (context, state) {
@@ -74,7 +80,9 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
                   MainElevatedButton(
                     buttonColor: AppColors.black12,
                     onPressed: () {
-                      mergeVideosCubit!.selectVideo(context);
+                      mergeVideosCubit!.selectVideo(context).then((value) {
+                        Navigation.pop(context);
+                      });
                     },
                     text: "select_video",
                   ),
@@ -84,8 +92,9 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
                   MainElevatedButton(
                     buttonColor: AppColors.black12,
                     onPressed: () {
-                      //mergeVideosCubit!.sss(widget.originalFile!.path, "file2");
-                      //FFmpegKit.cancel();
+                      mergeVideosCubit!.cancelMergeVideos().then((value) {
+                        Navigation.pop(context);
+                      });
                     },
                     text: "cancel",
                   ),
@@ -98,5 +107,3 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
     );
   }
 }
-
-
