@@ -22,7 +22,7 @@ class MediaProcessCubit extends Cubit<MediaProcessState>{
       seconds: 1,
     ),
     maxDuration: const Duration(
-      seconds: 25,
+      seconds: 250,
     ),
   );
 
@@ -31,19 +31,5 @@ class MediaProcessCubit extends Cubit<MediaProcessState>{
     duration.inSeconds.remainder(60).toString().padLeft(2, '0')
   ].join(":");
 
-/*  void setVolume() {
-    print("===============volume_mute===============");
-    if (volumeMute == 100) {
-      controller.video.setVolume(0);
-      volumeMute = 0;
-      isVolumeMute = true;
-      emit(SetVolumeVoice());
-    } else if (volumeMute == 0) {
-      controller.video.setVolume(100);
-      volumeMute = 100;
-      isVolumeMute = false;
-      emit(SetVolumeVoice());
-    }
-  }*/
 
 }

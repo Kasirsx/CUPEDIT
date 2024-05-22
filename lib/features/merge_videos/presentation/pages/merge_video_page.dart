@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cupcat/core/utils/navigation.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ffmpeg_kit_flutter/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -28,15 +27,15 @@ class MergeVideosPage extends StatefulWidget {
 
 class _MergeVideosPageState extends State<MergeVideosPage> {
   MergeVideosCubit? mergeVideosCubit;
-  late Statistics? statistics;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    statistics = null;
+
     mergeVideosCubit = MergeVideosCubit(
       originalFile: widget.originalFile,
+      context: context,
       originalVideoDuration: widget.totalVideoDuration!,
     );
   }
@@ -80,9 +79,7 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
                   MainElevatedButton(
                     buttonColor: AppColors.black12,
                     onPressed: () {
-                      mergeVideosCubit!.selectVideo(context).then((value) {
-                        Navigation.pop(context);
-                      });
+                      mergeVideosCubit!.selectVideo();
                     },
                     text: "select_video",
                   ),
@@ -92,9 +89,11 @@ class _MergeVideosPageState extends State<MergeVideosPage> {
                   MainElevatedButton(
                     buttonColor: AppColors.black12,
                     onPressed: () {
-                      mergeVideosCubit!.cancelMergeVideos().then((value) {
-                        Navigation.pop(context);
-                      });
+                      mergeVideosCubit!.cancelMergeVideos().then(
+                        (value) {
+                          Navigation.pop(context);
+                        },
+                      );
                     },
                     text: "cancel",
                   ),
