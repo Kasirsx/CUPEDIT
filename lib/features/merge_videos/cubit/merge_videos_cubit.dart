@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cupcat/core/utils/navigation.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:ffmpeg_kit_flutter/return_code.dart';
 import 'package:ffmpeg_kit_flutter/statistics.dart';
@@ -15,9 +16,11 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
   MergeVideosCubit({
     this.originalFile,
     required this.originalVideoDuration,
+    required this.context,
   }) : super(InitialMergeVideos());
 
   final File? originalFile;
+  final BuildContext context;
 
   int originalVideoDuration;
   late int videoDuration;
@@ -26,7 +29,7 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
 
   //video
 
-  Future<void> selectVideo(BuildContext context) async {
+  Future<void> selectVideo() async {
     final List<AssetEntity>? videos = await AssetPicker.pickAssets(
       context,
       pickerConfig: const AssetPickerConfig(
@@ -67,13 +70,14 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
       command,
       (session) async {
         final returnCode = await session.getReturnCode();
-        //sessionId = session.getSessionId();
-        final log = await session.getAllLogsAsString();
-        final failStackTrace = await session.getFailStackTrace();
+
+        // final log = await session.getAllLogsAsString();
+        // final failStackTrace = await session.getFailStackTrace();
 
         if (ReturnCode.isSuccess(returnCode)) {
           EasyLoading.dismiss();
           print(outputPath);
+          Navigation.pop(context);
           print("SUCCESS: Video merged successfully at $outputPath");
           print("SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS MERGE");
           emit(SuccessMergeVideos());

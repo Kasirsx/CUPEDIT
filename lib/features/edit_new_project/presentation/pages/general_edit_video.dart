@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cupcat/core/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_editor/video_editor.dart';
@@ -31,7 +32,6 @@ class GeneralEditVideos extends StatefulWidget {
     this.totalVideoDuration,
   });
 
-
   final int? totalVideoDuration;
   final File? file;
 
@@ -47,8 +47,6 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
   void initState() {
     print(widget.file);
     super.initState();
-
-
 
     itemsListCubit = ItemsListCubit();
     mediaProcessCubit = MediaProcessCubit(
@@ -81,135 +79,139 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      onPopInvoked: (didPop) => false,
-      child: GeneralNewProjectScaffold(
-        index: 0,
-        body: Column(
-          children: [
-            Expanded(
-              child: Center(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0),
-                      child: CropGridViewer.preview(
-                        controller: mediaProcessCubit!.controller,
+    if (!mediaProcessCubit!.controller.initialized) {
+      return const LoadingWidget();
+    } else {
+      return PopScope(
+        onPopInvoked: (didPop) => false,
+        child: GeneralNewProjectScaffold(
+          index: 0,
+          body: Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
+                        child: CropGridViewer.preview(
+                          controller: mediaProcessCubit!.controller,
+                        ),
                       ),
-                    ),
-                    AnimatedBuilder(
-                      animation: mediaProcessCubit!.controller.video,
-                      builder: (_, __) => AnimatedOpacity(
-                        opacity:
-                            mediaProcessCubit!.controller.isPlaying ? 0 : 1,
-                        duration: kThemeAnimationDuration,
-                        child: GestureDetector(
-                          onTap: mediaProcessCubit!.controller.video.play,
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: const BoxDecoration(
-                              color: AppColors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.play_arrow,
-                              color: AppColors.black,
+                      AnimatedBuilder(
+                        animation: mediaProcessCubit!.controller.video,
+                        builder: (_, __) => AnimatedOpacity(
+                          opacity:
+                              mediaProcessCubit!.controller.isPlaying ? 0 : 1,
+                          duration: kThemeAnimationDuration,
+                          child: GestureDetector(
+                            onTap: mediaProcessCubit!.controller.video.play,
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: const BoxDecoration(
+                                color: AppColors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.play_arrow,
+                                color: AppColors.black,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            BlocBuilder<ItemsListCubit, ListViewType>(
-              bloc: itemsListCubit,
-              builder: (context, state) {
-                return SizedBox(
-                  height: 200,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: SharedStorage.getLanguage() == "en" ? 10.0 : 0,
-                      right: SharedStorage.getLanguage() == "ar" ? 10.0 : 0,
+              BlocBuilder<ItemsListCubit, ListViewType>(
+                bloc: itemsListCubit,
+                builder: (context, state) {
+                  return SizedBox(
+                    height: 200,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: SharedStorage.getLanguage() == "en" ? 10.0 : 0,
+                        right: SharedStorage.getLanguage() == "ar" ? 10.0 : 0,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        //mainAxisSize: MainAxisSize.min,
+                        children: _trimSlider(),
+                      ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //mainAxisSize: MainAxisSize.min,
-                      children: _trimSlider(),
-                    ),
-                  ),
-                );
-              },
-            ),
-            BlocBuilder<ItemsListCubit, ListViewType>(
-              bloc: itemsListCubit,
-              builder: (context, ListViewType currentItemsListState) {
-                switch (currentItemsListState) {
-                  case ListViewType.base:
-                    return itemListBase(context);
+                  );
+                },
+              ),
+              BlocBuilder<ItemsListCubit, ListViewType>(
+                bloc: itemsListCubit,
+                builder: (context, ListViewType currentItemsListState) {
+                  switch (currentItemsListState) {
+                    case ListViewType.base:
+                      return itemListBase(context);
 
-                  case ListViewType.list1:
-                    return EditEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list1:
+                      return EditEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list2:
-                    return AudioEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list2:
+                      return AudioEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list3:
-                    return TextEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list3:
+                      return TextEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list4:
-                    return OverLayEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list4:
+                      return OverLayEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list5:
-                    return EffectsEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list5:
+                      return EffectsEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list6:
-                    return AspectRatioEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list6:
+                      return AspectRatioEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list7:
-                    return FiltersEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list7:
+                      return FiltersEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list8:
-                    return AdjustEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list8:
+                      return AdjustEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list9:
-                    return StickersEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list9:
+                      return StickersEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  case ListViewType.list10:
-                    return BackgroundEdit(
-                      itemsListCubit: itemsListCubit,
-                    );
+                    case ListViewType.list10:
+                      return BackgroundEdit(
+                        itemsListCubit: itemsListCubit,
+                      );
 
-                  default:
-                    return Container();
-                }
-              },
-            ),
-          ],
+                    default:
+                      return Container();
+                  }
+                },
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   List<Widget> _trimSlider() {
@@ -237,9 +239,13 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                       seconds: pos.toInt(),
                     ),
                   ),
-                  style: AppTheme.bodySmall.copyWith(color: AppColors.white,),
+                  style: AppTheme.bodySmall.copyWith(
+                    color: AppColors.white,
+                  ),
                 ),
-                const Expanded(child: SizedBox(),),
+                const Expanded(
+                  child: SizedBox(),
+                ),
                 AnimatedOpacity(
                   opacity: mediaProcessCubit!.controller.isTrimming ? 1 : 0,
                   duration: kThemeAnimationDuration,
@@ -285,7 +291,7 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 ),
                 IconButton(
                   onPressed: () {
-                      mergeVideos(context);
+                    mergeVideos(context);
                   },
                   icon: const Icon(
                     Icons.add,
@@ -303,7 +309,7 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                   onAttach: (position) {
                     print(position);
                   },
-                  debugLabel: "ddddddddddddd",
+                  /*debugLabel: "ddddddddddddd",*/
                   initialScrollOffset: 15.5,
                   keepScrollOffset: false,
                   onDetach: (position) {
@@ -394,11 +400,6 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                     print(" =============switchToList background===========");
                     itemsListCubit!.switchToList10();
                     break;
-
-                  /* case 10:
-                    itemsListCubit!.switchToList10();
-                    //currentListViewType = (ListViewType.list10);
-                    break;*/
                 }
               },
               icon: ItemsName.listOfItems[index].nameAssets!,

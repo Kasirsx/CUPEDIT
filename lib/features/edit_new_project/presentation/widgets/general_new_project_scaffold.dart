@@ -28,7 +28,55 @@ class GeneralNewProjectScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.black12,
       resizeToAvoidBottomInset: false,
-      appBar: _buildAppBar(context),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.black12,
+        leading: IconButton(
+          onPressed: () {
+            Navigation.pushAndRemoveUntil(context, const HomeScreen());
+          },
+          icon: const Icon(
+            Icons.cancel_outlined,
+            color: AppColors.white,
+          ),
+        ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.help_outline,
+                color: AppColors.white,
+              ),
+            ),
+            Container(
+              width: 50,
+              height: 25,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          InkWell(
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: CustomImage.rectangle(
+                image: AppAssets.saveEditImageOrVideoNewProject,
+                isNetworkImage: false,
+                svg: false,
+                width: 20.0,
+                height: 22.0,
+                color: AppColors.white,
+              ),
+            ),
+          ),
+        ],
+      ) /*_buildAppBar(context)*/,
       body: Padding(
         padding:
             EdgeInsets.symmetric(vertical: vertical, horizontal: horizontal),
@@ -37,7 +85,8 @@ class GeneralNewProjectScaffold extends StatelessWidget {
     );
   }
 
-  PreferredSizeWidget? _buildAppBar(BuildContext context) {
+
+/*  PreferredSizeWidget? _buildAppBar(BuildContext context) {
     switch (index) {
       case 0:
         return AppBar(
@@ -95,5 +144,5 @@ class GeneralNewProjectScaffold extends StatelessWidget {
         break;
     }
     return null;
-  }
+  }*/
 }
