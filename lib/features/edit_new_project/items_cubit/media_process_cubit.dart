@@ -22,7 +22,7 @@ class MediaProcessCubit extends Cubit<MediaProcessState>{
       seconds: 1,
     ),
     maxDuration: const Duration(
-      seconds: 250,
+      seconds: 25,
     ),
   );
 
