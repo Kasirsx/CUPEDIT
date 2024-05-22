@@ -309,7 +309,6 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                   onAttach: (position) {
                     print(position);
                   },
-                  /*debugLabel: "ddddddddddddd",*/
                   initialScrollOffset: 15.5,
                   keepScrollOffset: false,
                   onDetach: (position) {
@@ -319,11 +318,14 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 controller: mediaProcessCubit!.controller,
                 height: mediaProcessCubit!.height,
                 horizontalMargin: mediaProcessCubit!.height / 4,
-                child: TrimTimeline(
-                  controller: mediaProcessCubit!.controller,
-                  padding: const EdgeInsets.only(top: 10),
-                  textStyle: AppTheme.bodySmall.copyWith(
-                    color: AppColors.white,
+                child: Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  child: TrimTimeline(
+                    controller: mediaProcessCubit!.controller,
+                    padding: const EdgeInsets.only(top: 10),
+                    textStyle: AppTheme.bodySmall.copyWith(
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
               ),
