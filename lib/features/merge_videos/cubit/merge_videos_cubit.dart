@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:cupcat/core/constants/commands.dart';
 import 'package:cupcat/core/utils/navigation.dart';
+import 'package:cupcat/core/utils/shared_storage.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:ffmpeg_kit_flutter/return_code.dart';
 import 'package:ffmpeg_kit_flutter/statistics.dart';
@@ -47,7 +49,7 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
 
           print(asset.duration);
           videoDuration = asset.duration * 1000;
-          mergeVideos(originalFile!.path, videoFile.path);
+          mergeVideos(SharedStorage.getVideoPath(), videoFile.path);
         }
       }
     }
@@ -58,10 +60,16 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
     final Directory? downloadsDir = await getDownloadsDirectory();
 
-    final outputPath = '${downloadsDir!.path}/merged_video_${now()}.mp4';
+    final outputPath =await outPut();
+    /*final outputPath = '${downloadsDir!.path}/merged_video_${now()}.mp4';*/
 
-    final String command =
+    final String command =Commands.mergeVideosCommand(
+      inputPath1: inputPath1,inputPath2: inputPath2,
+    );
+/*
+ final String command =
         '-i $inputPath1 -i $inputPath2 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" -y $outputPath';
+*/
 
     emit(LoadMergeVideos());
     print("LOADING LOADING LOADING LOADING LOADING LOADING LOADING MERGE");
@@ -78,6 +86,9 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
           EasyLoading.dismiss();
           print(outputPath);
           Navigation.pop(context);
+
+          SharedStorage.writeVideoPath(outputPath);
+
           print("SUCCESS: Video merged successfully at $outputPath");
           print("SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS MERGE");
           emit(SuccessMergeVideos());
@@ -124,8 +135,23 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
     EasyLoading.show(status: "merging  $completePercentage% ");
   }
 
-  String now() {
+/*  String now() {
     final DateTime now = DateTime.now();
     return "${now.year}${now.month}${now.day}_${now.hour}${now.minute}${now.second}";
+  }*/
+
+
+
+  static Future<String?> outPut() async {
+    final Directory tempDir = await getTemporaryDirectory();
+    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+    final Directory? downloadsDir = await getDownloadsDirectory();
+    final videoName = now().toString();
+    return "${downloadsDir!.path}/merge$videoName.mp4";
+  }
+
+  static String now() {
+    final DateTime now = DateTime.now();
+    return "${now.year}_${now.month}_${now.day}_${now.hour}_${now.minute}";
   }
 }
