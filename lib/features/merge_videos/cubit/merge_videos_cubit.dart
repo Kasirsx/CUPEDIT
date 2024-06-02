@@ -56,21 +56,15 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
   }
 
   Future<void> mergeVideos(String inputPath1, String inputPath2) async {
-    final Directory tempDir = await getTemporaryDirectory();
-    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
-    final Directory? downloadsDir = await getDownloadsDirectory();
-
     final outputPath = await outPut();
-    /*final outputPath = '${downloadsDir!.path}/merged_video_${now()}.mp4';*/
 
     final String command = Commands.mergeVideosCommand(
       inputPath1: inputPath1,
       inputPath2: inputPath2,
+      outPath: outputPath,
     );
-/*
- final String command =
-        '-i $inputPath1 -i $inputPath2 -filter_complex "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" -y $outputPath';
-*/
+
+    print(command);
 
     emit(LoadMergeVideos());
     print("LOADING LOADING LOADING LOADING LOADING LOADING LOADING MERGE");
@@ -86,9 +80,10 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
         if (ReturnCode.isSuccess(returnCode)) {
           EasyLoading.dismiss();
           print(outputPath);
-          Navigation.pop(context);
 
           SharedStorage.writeVideoPath(outputPath);
+
+          Navigation.pop(context);
 
           print("SUCCESS: Video merged successfully at $outputPath");
           print("SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS SUCCESS MERGE");
