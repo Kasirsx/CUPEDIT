@@ -10,7 +10,7 @@ import '/features/edit_new_project/presentation/widgets/select_type_dialog.dart'
 import '/features/home/presentation/widgets/general_home_page_scaffold.dart';
 import '/features/home/presentation/widgets/grid_tranzlation_and_icons.dart';
 import '/features/home/presentation/widgets/home_new_project_card.dart';
-import '/features/home/presentation/widgets/projects_home_row.dart';
+import '/features/home/presentation/widgets/list_projects_home.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,66 +24,59 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return GeneralHomePageScaffold(
       index: 1,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ...[
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
-                  mainAxisSpacing: 25,
-                  mainAxisExtent: 100,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ...[
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                    mainAxisSpacing: 25,
+                    mainAxisExtent: 100,
+                  ),
+                  itemCount: GridItemTranslation.grid.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _buildFuietureWidgetItem(
+                      GridItemTranslation.grid[index].text!,
+                      GridItemTranslation.grid[index].assets!,
+                      onTap: () {
+                        print(index);
+                      },
+                    );
+                  },
                 ),
-                itemCount: GridItemTranslation.grid.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _buildFuietureWidgetItem(
-                    GridItemTranslation.grid[index].text!,
-                    GridItemTranslation.grid[index].assets!,
-                    onTap: () {
-                      print(index);
-                    },
-                  );
-                },
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'press_and_drag_to_reorder'.tr(),
-                  style: AppTheme.bodySmall,
-                ),
-              ),
-              HomeNewProjectCard(
-                onTap: () {
-                  /*     pickAssets(
-                    maxCount: 10,
-                    requestType: RequestType.common,
-                  );*/
-                  AnimationNavigation.slidePush(
-                    context,
-                    const NewProjectPage(),
-                  );
-
-                  /* _selectAssetsType(context);
-                  //pickVideo(context);
-                  print("object");*/
-                  //AnimationNavigation.slidePush(context, NewProjectPage());
-                },
-              ),
-              const ProjectsHomeRow(),
-            ].expand(
-              (element) => [
-                element,
-                const Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 6,
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'press_and_drag_to_reorder'.tr(),
+                    style: AppTheme.bodySmall,
                   ),
                 ),
-              ],
-            ),
-          ],
+                HomeNewProjectCard(
+                  onTap: () {
+                    AnimationNavigation.slidePush(
+                      context,
+                      const NewProjectPage(),
+                    );
+                  },
+                ),
+                const ListProjectsHome(),
+              ].expand(
+                (element) => [
+                  element,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 6,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

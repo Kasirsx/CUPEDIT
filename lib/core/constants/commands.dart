@@ -1,12 +1,6 @@
-import 'dart:io';
-
-import 'package:path_provider/path_provider.dart';
-
 import '/core/utils/shared_storage.dart';
 
 class Commands {
-
-
   static String mergeVideosCommand(
       {String? inputPath1, String? inputPath2, String? outPath}) {
     int videoQuality = SharedStorage.getVideoQuality();

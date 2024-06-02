@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:flutter/material.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
+import '/core/database/db/operations_on_database.dart';
+import '/core/extensions/string_extension.dart';
 import '/core/utils/shared_storage.dart';
 import '/core/widgets/custom_text_rich.dart';
 import '/core/widgets/loading.dart';
@@ -279,18 +280,28 @@ class _VideoPickerState extends State<VideoPicker> {
                                 if (path != null) {
                                   print(path.path);
 
-                                  FFmpegKitConfig.init().then(
-                                    (value) => AnimationNavigation
-                                        .scalePushReplacement(
-                                      context,
-                                      /*CutVideos(
+                                  OperationsOnDatabase(size: asset.size)
+                                      .setQuality()
+                                      .then((quality) {
+                                    OperationsOnDatabase.insertData(
+                                      duration: asset.videoDuration,
+                                      name: asset.title!.split(".").first,
+                                      assetId: asset.id.toInteger(),
+                                      date: now(),
+                                      assetFile: path.path,
+                                      quality: quality,
+                                    );
+                                  });
+
+                                  AnimationNavigation.scalePushReplacement(
+                                    context,
+                                    /*CutVideos(
                                       file: File(path.path),
                                     ),*/
-                                      GeneralEditVideos(
-                                        totalVideoDuration:
-                                            asset.videoDuration.inMilliseconds,
-                                        file: File(path.path),
-                                      ),
+                                    GeneralEditVideos(
+                                      totalVideoDuration:
+                                          asset.videoDuration.inMilliseconds,
+                                      file: File(path.path),
                                     ),
                                   );
                                   print('Selected Asset Path: $path');
@@ -316,105 +327,6 @@ class _VideoPickerState extends State<VideoPicker> {
               );
   }
 
-/*  Widget assetWidget(AssetEntity assetEntity) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: InkWell(
-            onTap: () {
-              Navigation.push(
-                context,
-                PickerImageOrVideo(
-                  assetEntity: assetEntity,
-                ),
-              );
-            },
-            child: Padding(
-              padding: EdgeInsets.all(
-                widget.selectedAssetList.contains(assetEntity) == true ? 8 : 0,
-              ),
-              child: AssetEntityImage(
-                assetEntity,
-                isOriginal: false,
-                thumbnailSize: const ThumbnailSize.square(250),
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Center(
-                    child: Icon(
-                      Icons.error,
-                      color: Colors.red,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-        if (assetEntity.type == AssetType.video)
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "${assetEntity.videoDuration}",
-                      style: AppTheme.bodySmall.copyWith(
-                        color: AppColors.white,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.video_call,
-                      color: Colors.red,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: GestureDetector(
-              onTap: () => selectedAssets(assetEntity: assetEntity),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                  width: 22.5,
-                  height: 22.5,
-                  decoration: BoxDecoration(
-                    color:
-                        widget.selectedAssetList.contains(assetEntity) == true
-                            ? AppColors.blue
-                            : AppColors.black12,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColors.white,
-                      width: 1.5,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "${widget.selectedAssetList.indexOf(assetEntity) + 1}",
-                      style: AppTheme.bodySmall.copyWith(
-                        color: widget.selectedAssetList.contains(assetEntity) ==
-                                true
-                            ? AppColors.white
-                            : AppColors.transparent,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }*/
-
   List<File> selectedAssetPathList = <File>[];
 
   void selectedAssets({required AssetEntity assetEntity}) {
@@ -430,47 +342,19 @@ class _VideoPickerState extends State<VideoPicker> {
     } else if (widget.selectedAssetList.length < widget.maxCount) {
       setState(() {
         widget.selectedAssetList.add(assetEntity);
-        assetEntity.file.then((value) {
-          print(value);
-          selectedAssetPathList.add(value!);
-        },);
-        //selectedAssetPathList.add(assetPathEntity!);
+        assetEntity.file.then(
+          (value) {
+            print(value);
+            selectedAssetPathList.add(value!);
+          },
+        );
         print(widget.selectedAssetList);
       });
     }
   }
 
-/*  selectedAssets({required AssetEntity assetEntity}) {
-    if (widget.selectedAssetList.contains(assetEntity)) {
-      setState(() {
-        widget.selectedAssetList.remove(assetEntity);
-      });
-    } else if (widget.selectedAssetList.length < widget.maxCount) {
-      setState(() {
-        widget.selectedAssetList.add(assetEntity);
-      });
-    }
+  String now() {
+    final DateTime now = DateTime.now();
+    return "${now.year}/${now.month}/${now.day}  ${now.hour}:${now.minute}";
   }
-
-  List<File> selectedAssetPathList = [];
-
-  selectedPathAssets({required AssetEntity assetEntity}) async {
-    if (widget.selectedAssetList.contains(assetEntity)) {
-      setState(() {
-        widget.selectedAssetList.remove(assetEntity);
-      });
-    } else if (widget.selectedAssetList.length < widget.maxCount) {
-      // Get the file path from the selected asset
-      File? file = await assetEntity.file;
-
-      if (file != null && file.existsSync()) {
-        setState(() {
-          widget.selectedAssetList.add(file);
-        });
-      } else {
-        // Handle case when file is null or doesn't exist
-        print('File is null or does not exist');
-      }
-    }
-  }*/
 }

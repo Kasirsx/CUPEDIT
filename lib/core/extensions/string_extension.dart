@@ -37,7 +37,7 @@ extension StringExtensions on String {
   toInteger() {
     try {
       final integer = int.parse(this);
-      return integer.toString();
+      return integer;
     } catch (e) {
       return 'Invalid';
     }

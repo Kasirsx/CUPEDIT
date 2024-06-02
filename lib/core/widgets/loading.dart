@@ -8,32 +8,26 @@ class LoadingWidget extends StatelessWidget {
   const LoadingWidget({
     Key? key,
     this.color,
+    this.backgroundColor=AppColors.black,
   }) : super(key: key);
   final Color? color;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
-//   return SpinKitPouringHourGlass(color: AppColors.primaryColor,size: 25,);
-    return SpinKitFadingCircle(
-      itemBuilder: (BuildContext context, int index) {
-        return DecoratedBox(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), //border corner radius
-            color: color ?? AppColors.primaryColor,
-          ),
-        );
-      },
-      size: 35,
+    return Container(
+      color: backgroundColor,
+      child: SpinKitFadingCircle(
+        itemBuilder: (BuildContext context, int index) {
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), //border corner radius
+              color: color ?? AppColors.primaryColor,
+            ),
+          );
+        },
+        size: 35,
+      ),
     );
-//    return const Center(
-//      child: SizedBox(
-//        width: 20,
-//        height: 20,
-//        child: CircularProgressIndicator(
-//          strokeWidth: 1,
-//          color: AppColors.lightBlueColor,
-//        ),
-//      ),
-//    );
   }
 }
