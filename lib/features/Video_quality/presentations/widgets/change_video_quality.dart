@@ -20,48 +20,57 @@ class ChangeVideoQuality extends StatefulWidget {
 
 class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
   late double _slider;
-  double _sliderText = 0;
+  late double _sliderText;
   String qualityText = '';
+
   int? _sliderValue() {
     //late int value;
     switch (SharedStorage.getVideoQuality()) {
       case 300:
         _slider = 0;
+        _sliderText = 144;
         setState(() {});
         break;
 
       case 500:
         _slider = 1;
+        _sliderText = 240;
         setState(() {});
         break;
 
       case 1000:
         _slider = 3;
+        _sliderText = 360;
         setState(() {});
         break;
 
       case 1500:
         _slider = 4;
+        _sliderText = 480;
         setState(() {});
         break;
 
       case 3000:
         _slider = 6;
+        _sliderText = 720;
         setState(() {});
         break;
 
       case 5000:
         _slider = 7;
+        _sliderText = 1080;
         setState(() {});
         break;
 
       case 8000:
         _slider = 9;
+        _sliderText = 1440;
         setState(() {});
         break;
 
       case 16000:
         _slider = 10;
+        _sliderText = 2160;
         setState(() {});
         break;
     }
@@ -71,7 +80,6 @@ class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _sliderValue();
   }
@@ -87,6 +95,7 @@ class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
         children: [
           Container(
             height: size,
+            width: double.infinity,
             padding: const EdgeInsets.all(10),
             decoration: const BoxDecoration(
               color: AppColors.black,
@@ -95,6 +104,7 @@ class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -117,6 +127,22 @@ class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
                           ),
                         ),
                       ],
+                    ),
+                    Container(
+                      width: 50,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greyTest,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "${_sliderText.toInt()}p",
+                          style: AppTheme.headline5.copyWith(
+                            color: AppColors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -154,9 +180,9 @@ class _ChangeVideoQualityState extends State<ChangeVideoQuality> {
                         inactiveColor: AppColors.grey,
                         label: "${_sliderText.toInt()}p",
                         onChanged: (value) {
-                          print(value.toInt());
+                          print(value.round());
 
-                          switch (value.toInt()) {
+                          switch (value.round()) {
                             case 0:
                               setState(() {
                                 _sliderText = 144;

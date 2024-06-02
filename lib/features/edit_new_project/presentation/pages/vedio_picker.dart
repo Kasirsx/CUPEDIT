@@ -279,7 +279,7 @@ class _VideoPickerState extends State<VideoPicker> {
                                 File? path = await asset.file;
                                 if (path != null) {
                                   print(path.path);
-
+                                  SharedStorage.writeVideoPath(path.path);
                                   OperationsOnDatabase(size: asset.size)
                                       .setQuality()
                                       .then((quality) {
