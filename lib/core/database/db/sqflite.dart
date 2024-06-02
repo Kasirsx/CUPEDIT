@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -26,7 +27,7 @@ class SqfliteDataBase {
 
   _onCreate(Database db, int version) async {
     await db.execute('''
-    CREATE TABLE "tasks" (
+    CREATE TABLE "videos" (
       "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
       "assetId" INTEGER NOT NULL,
       "duration" TEXT NOT NULL,
@@ -43,6 +44,10 @@ class SqfliteDataBase {
     Database? mydb = await db;
     List<Map> response = await mydb!.rawQuery(sql);
     print('================database has been read==================');
+    Logger logger = Logger(
+      printer: PrettyPrinter(),
+    );
+    logger.i(response);
     return response;
   }
 

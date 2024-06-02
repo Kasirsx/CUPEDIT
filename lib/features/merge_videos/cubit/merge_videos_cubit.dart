@@ -1,8 +1,5 @@
 import 'dart:io';
 
-import 'package:cupcat/core/constants/commands.dart';
-import 'package:cupcat/core/utils/navigation.dart';
-import 'package:cupcat/core/utils/shared_storage.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:ffmpeg_kit_flutter/return_code.dart';
 import 'package:ffmpeg_kit_flutter/statistics.dart';
@@ -12,6 +9,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
+import '/core/constants/commands.dart';
+import '/core/utils/navigation.dart';
+import '/core/utils/shared_storage.dart';
 import '/features/merge_videos/cubit/merge_videos_state.dart';
 
 class MergeVideosCubit extends Cubit<MergeVideosState> {
@@ -60,11 +60,12 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
     final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
     final Directory? downloadsDir = await getDownloadsDirectory();
 
-    final outputPath =await outPut();
+    final outputPath = await outPut();
     /*final outputPath = '${downloadsDir!.path}/merged_video_${now()}.mp4';*/
 
-    final String command =Commands.mergeVideosCommand(
-      inputPath1: inputPath1,inputPath2: inputPath2,
+    final String command = Commands.mergeVideosCommand(
+      inputPath1: inputPath1,
+      inputPath2: inputPath2,
     );
 /*
  final String command =
@@ -139,8 +140,6 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
     final DateTime now = DateTime.now();
     return "${now.year}${now.month}${now.day}_${now.hour}${now.minute}${now.second}";
   }*/
-
-
 
   static Future<String?> outPut() async {
     final Directory tempDir = await getTemporaryDirectory();

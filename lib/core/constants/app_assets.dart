@@ -75,6 +75,7 @@ class AppAssets {
   static const String homePageProductPhoto = '${baseHomeURI}product_photo.png';
   static const String homePageAutoCut = '${baseHomeURI}autoCut.png';
   static const String homePageAiModel = '${baseHomeURI}ai_model.png';
+  static const String homePageListProjects = '${baseHomeURI}list_projects.png';
 
 //bottom navigation Bar
   static const String baseBottomNavigationBarMenuURI =

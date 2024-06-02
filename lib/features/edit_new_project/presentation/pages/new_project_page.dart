@@ -61,13 +61,7 @@ class _NewProjectPageState extends State<NewProjectPage> {
   int? maxVideoCount = 10;
   int? maxImageCount = 10;
 
-/*  Future<int?> countVideo()async{
-    maxVideoCount = await selectedAlbumVideo!.assetCountAsync;
-    return maxVideoCount;
-  }  Future<int?> countImage()async{
-    maxImageCount = await selectedAlbumImage!.assetCountAsync;
-    return maxImageCount;
-  }*/
+
 
   AssetPathEntity? selectedAlbumVideo;
   List<AssetPathEntity> albumListVideo = <AssetPathEntity>[];

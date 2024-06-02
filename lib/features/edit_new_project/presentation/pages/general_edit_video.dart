@@ -1,13 +1,16 @@
 import 'dart:io';
 
-import 'package:cupcat/core/widgets/loading.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:video_editor/video_editor.dart';
 
+import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
 import '/core/constants/app_theme.dart';
 import '/core/utils/shared_storage.dart';
+import '/core/widgets/loading.dart';
 import '/features/adjust_edit/presentation/pages/adjust_edit.dart';
 import '/features/aspect_ratio_edit/presentation/pages/aspect_ratio_edit.dart';
 import '/features/audio_edit/presentation/pages/audio_edit.dart';
@@ -20,6 +23,7 @@ import '/features/edit_new_project/presentation/widgets/export_service.dart';
 import '/features/edit_new_project/presentation/widgets/general_new_project_scaffold.dart';
 import '/features/effects_edit/presentation/pages/effects_edit.dart';
 import '/features/filters_edit/presentation/pages/filters_edit.dart';
+import '/features/home/presentation/pages/homeScreen.dart';
 import '/features/merge_videos/presentation/pages/merge_video_page.dart';
 import '/features/overlay_edit/presentation/pages/overlay_edit.dart';
 import '/features/stickers_edit/presentation/pages/stickers_edit.dart';
@@ -83,7 +87,17 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
       return const LoadingWidget();
     } else {
       return PopScope(
-        onPopInvoked: (didPop) => false,
+        canPop: false,
+        onPopInvoked: (didPop) {
+          EasyLoading.showToast(
+            "your_project_has_been_saved_successfully".tr(),
+            duration: const Duration(seconds: 1),
+            maskType: EasyLoadingMaskType.black,
+            toastPosition: EasyLoadingToastPosition.bottom,
+          );
+          AnimationNavigation.fadePushAndRemoveUntil(
+              context, const HomeScreen());
+        },
         child: GeneralNewProjectScaffold(
           index: 0,
           body: Column(
@@ -319,7 +333,8 @@ class _GeneralEditVideosState extends State<GeneralEditVideos> {
                 height: mediaProcessCubit!.height,
                 horizontalMargin: mediaProcessCubit!.height / 4,
                 child: Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: TrimTimeline(
                     controller: mediaProcessCubit!.controller,
                     padding: const EdgeInsets.only(top: 10),
