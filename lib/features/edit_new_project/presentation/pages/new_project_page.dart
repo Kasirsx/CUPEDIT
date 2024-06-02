@@ -31,10 +31,10 @@ class _NewProjectPageState extends State<NewProjectPage> {
     // TODO: implement initState
     super.initState();
     MediaServices().loadAlbums(RequestType.video).then((value) {
-      setState(() {
+
         albumListVideo = value;
         selectedAlbumVideo = value[0];
-      });
+
 
       MediaServices().loadAssets(selectedAlbumVideo!).then((value) {
         setState(() {
@@ -42,11 +42,13 @@ class _NewProjectPageState extends State<NewProjectPage> {
         });
       });
     });
+
+
     MediaServices().loadAlbums(RequestType.image).then((value) {
-      setState(() {
+
         albumListImage = value;
         selectedAlbumImage = value[0];
-      });
+
 
       MediaServices().loadAssets(selectedAlbumImage!).then((value) {
         setState(() {

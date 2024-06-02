@@ -1,7 +1,7 @@
 import 'package:get_storage/get_storage.dart';
 
 class SharedStorage {
-  static String storageName = 'e_commerce_h';
+  static String storageName = 'CUPEDIT';
   static GetStorage box = GetStorage(storageName);
   static String tokenKey = 'userToken';
   static String tokenFCM = 'TokenFCM';
@@ -9,6 +9,8 @@ class SharedStorage {
   static String languageKey = 'language';
   static String successMessageKey = 'successMessage';
   static String imageURL = 'ImageURL';
+  static String videoQuality = 'videoQuality';
+  static String videoPath = 'videoPath';
 
   static init() async {
     await GetStorage.init(storageName);
@@ -70,11 +72,19 @@ class SharedStorage {
     box.write(successMessageKey, value);
   }
 
-  static getImageURL() {
-    return box.read(imageURL);
+  static writeVideoQuality(value) {
+    box.write(videoQuality, value);
   }
 
-  static writeImageURL(value) {
-    box.write(imageURL, value);
+  static getVideoQuality() {
+    return box.read(videoQuality);
+  }
+
+  static writeVideoPath(value) {
+    box.write(videoPath, value);
+  }
+
+  static getVideoPath() {
+    return box.read(videoPath);
   }
 }
