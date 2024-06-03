@@ -26,7 +26,6 @@ class OperationsOnDatabase {
     this.duration,
     this.time,*/
     this.size,
-    this.quality,
   });
 
   static Future insertData({

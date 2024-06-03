@@ -44,12 +44,18 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
       for (AssetEntity asset in videos) {
         File? videoFile = await asset.file;
         if (videoFile != null) {
-          print([originalFile!.path, videoFile.path]);
-          print('Selected Asset Path: ${videoFile.path}');
+          print([SharedStorage.getVideoPath(), videoFile.path]);
+
+          // Enclose paths in double quotes
+          String quotedOriginalPath = '"${SharedStorage.getVideoPath()}"';
+          String quotedVideoPath = '"${videoFile.path}"';
+
+          print('Selected Asset Path: $quotedVideoPath');
 
           print(asset.duration);
           videoDuration = asset.duration * 1000;
-          mergeVideos(SharedStorage.getVideoPath(), videoFile.path);
+          // Pass the quoted paths
+          mergeVideos(quotedOriginalPath, quotedVideoPath);
         }
       }
     }
@@ -58,10 +64,13 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
   Future<void> mergeVideos(String inputPath1, String inputPath2) async {
     final outputPath = await outPut();
 
+    // Enclose the output path in double quotes
+    String quotedOutputPath = '"$outputPath"';
+
     final String command = Commands.mergeVideosCommand(
       inputPath1: inputPath1,
       inputPath2: inputPath2,
-      outPath: outputPath,
+      outPath: quotedOutputPath,
     );
 
     print(command);
@@ -73,9 +82,6 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
       command,
       (session) async {
         final returnCode = await session.getReturnCode();
-
-        // final log = await session.getAllLogsAsString();
-        // final failStackTrace = await session.getFailStackTrace();
 
         if (ReturnCode.isSuccess(returnCode)) {
           EasyLoading.dismiss();
@@ -107,7 +113,7 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
       },
       (statistics) {
         sessionId = statistics.getSessionId();
-        //updateProgressDialog(statistics);
+       // updateProgressDialog(statistics);
       },
     );
   }
@@ -123,18 +129,11 @@ class MergeVideosCubit extends Cubit<MergeVideosState> {
     }
 
     double timeInMilliseconds = statistics.getTime();
-    print(timeInMilliseconds);
-    print(originalVideoDuration + videoDuration);
-    int completePercentage =
-        (timeInMilliseconds * 100) ~/ originalVideoDuration + videoDuration;
+    int totalDuration = SharedStorage.getVideoDuration() + videoDuration;
+    int completePercentage = timeInMilliseconds * 100 ~/ totalDuration;
 
-    EasyLoading.show(status: "merging  $completePercentage% ");
+    EasyLoading.show(status: "merging $completePercentage% ");
   }
-
-/*  String now() {
-    final DateTime now = DateTime.now();
-    return "${now.year}${now.month}${now.day}_${now.hour}${now.minute}${now.second}";
-  }*/
 
   static Future<String?> outPut() async {
     final Directory tempDir = await getTemporaryDirectory();

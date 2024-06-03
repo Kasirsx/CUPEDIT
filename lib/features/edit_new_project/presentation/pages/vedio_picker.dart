@@ -279,7 +279,10 @@ class _VideoPickerState extends State<VideoPicker> {
                                 File? path = await asset.file;
                                 if (path != null) {
                                   print(path.path);
+
                                   SharedStorage.writeVideoPath(path.path);
+                                  SharedStorage.writeVideoDuration(
+                                      asset.duration * 1000);
                                   OperationsOnDatabase(size: asset.size)
                                       .setQuality()
                                       .then((quality) {
@@ -290,20 +293,21 @@ class _VideoPickerState extends State<VideoPicker> {
                                       date: now(),
                                       assetFile: path.path,
                                       quality: quality,
-                                    );
-                                  });
-
-                                  AnimationNavigation.scalePushReplacement(
-                                    context,
-                                    /*CutVideos(
+                                    ).then((value) {
+                                      AnimationNavigation.scalePushReplacement(
+                                        context,
+                                        /*CutVideos(
                                       file: File(path.path),
                                     ),*/
-                                    GeneralEditVideos(
-                                      totalVideoDuration:
-                                          asset.videoDuration.inMilliseconds,
-                                      file: File(path.path),
-                                    ),
-                                  );
+                                        GeneralEditVideos(
+                                          totalVideoDuration: asset
+                                              .videoDuration.inMilliseconds,
+                                          file: File(path.path),
+                                        ),
+                                      );
+                                    });
+                                  });
+
                                   print('Selected Asset Path: $path');
                                 }
                               }
