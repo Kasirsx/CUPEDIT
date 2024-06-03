@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '/core/animations/navigation_route_animation/navigation_route_animation.dart';
 import '/core/constants/app_colors.dart';
@@ -50,10 +51,12 @@ class _HomeState extends State<Home> {
                   },
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //_requestStoragePermission();
+                  },
                   child: Text(
                     'press_and_drag_to_reorder'.tr(),
-                    style: AppTheme.bodySmall,
+                    style: AppTheme.bodySmall.copyWith(color: AppColors.black),
                   ),
                 ),
                 HomeNewProjectCard(
@@ -83,12 +86,43 @@ class _HomeState extends State<Home> {
   }
 }
 
-void _selectAssetsType(BuildContext context) {
+
+/*Future<void> _requestStoragePermission() async {
+  PermissionStatus status = await Permission.storage.request();
+
+  // Check the status of the permission
+  if (status.isGranted) {
+    // The permission has been granted
+    print('Storage permission granted!');
+  } else if (status.isDenied) {
+    // The user has denied the permission
+    print('Storage permission denied. Requesting again...');
+    // Request the permission again
+    status = await Permission.storage.request();
+    if (status.isGranted) {
+      print('Storage permission granted!');
+    } else if (status.isPermanentlyDenied) {
+      print('Storage permission permanently denied. You need to go to app settings to grant the permission.');
+    } else {
+      print('Storage permission denied or not granted yet.');
+    }
+  } else if (status.isPermanentlyDenied) {
+    // The user has permanently denied the permission
+    print('Storage permission permanently denied. You need to go to app settings to grant the permission.');
+  } else {
+    // The permission has been denied or the user has not yet decided
+    print('Storage permission denied or not granted yet.');
+  }
+}*/
+
+
+
+/*void _selectAssetsType(BuildContext context) {
   showDialog(
     context: context,
     builder: (context) => const SelectAssetsType(),
   );
-}
+}*/
 
 Widget _buildFuietureWidgetItem(String title, String imagePath,
     {void Function()? onTap}) {

@@ -11,6 +11,7 @@ class SharedStorage {
   static String imageURL = 'ImageURL';
   static String videoQuality = 'videoQuality';
   static String videoPath = 'videoPath';
+  static String videoDuration = 'videoDuration';
 
   static init() async {
     await GetStorage.init(storageName);
@@ -86,5 +87,13 @@ class SharedStorage {
 
   static getVideoPath() {
     return box.read(videoPath);
+  }
+
+  static writeVideoDuration(value) {
+    box.write(videoDuration, value);
+  }
+
+  static getVideoDuration() {
+    return box.read(videoDuration);
   }
 }
